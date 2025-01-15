@@ -4,105 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HHC Mortars</title>
+  <link rel="stylesheet" type="text/css" href="mortars.css">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/daisyui@2.15.0/dist/full.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
-  <style>
-    body {
-      background-color: #1a1d23;
-      color: #fff;
-    }
-
-    .flashcard {
-      width: 200px;
-      min-height: 150px; /* Use min-height instead of fixed height */
-      margin: 20px;
-      padding: 20px;
-      border: 1px solid #333;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      display: inline-block;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.5s;
-      background-color: #2f343a;
-    }
-
-    .flashcard.flipped {
-      transform: rotateY(180deg);
-    }
-
-    .flashcard .front,
-    .flashcard .back {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      min-height: 150px; /* Use min-height here as well */
-      backface-visibility: hidden;
-      background-color: #2f343a;
-      padding: 20px;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column; /* Align items vertically */
-      justify-content: space-between; /* Distribute space between question/answer and button */
-    }
-
-    .flashcard .back {
-      transform: rotateY(180deg);
-    }
-
-    .flashcard .front p,
-    .flashcard .back p {
-      margin-bottom: 10px; /* Add some space between question and answer */
-      word-break: break-word; /* Allow long words to be broken and wrap onto the next line */
-    }
-
-    .flashcard .show-answer,
-    .flashcard .show-question {
-      cursor: pointer;
-      color: #337ab7;
-      margin-top: auto; /* Push the button to the bottom */
-    }
-
-    .flashcard .show-answer:hover,
-    .flashcard .show-question:hover {
-      text-decoration: underline;
-    }
-    .accordion-content {
-      padding: 20px;
-      border: 1px solid #333;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      background-color: #2f343a;
-    }
-
-    .accordion-content.hidden {
-      display: none;
-    }
-
-    .accordion-button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 10px;
-      background-color: #337ab7;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    .accordion-button:hover {
-      background-color: #23527c;
-    }
-
-    .search-bar {
-      padding: 10px 20px;
-      border: 1px solid #333;
-      border-radius: 10px;
-      width: 50%;
-      margin-bottom: 20px;
-      background-color: #2f343a;
-    }
-  </style>
 </head>
 <body>
   <div class="container mx-auto p-4">
@@ -111,7 +16,7 @@
       <span class="logo-text">HCC Mortars</span>
     </div>
 
-    <h1 class="text-3xl font-bold mb-4">Mortar knowledge</h1>
+    <h1 class="text-3xl font-bold mb-4">Mortar Knowladge</h1>
     <div id="accordion" class="flex flex-col">
       <div class="accordion-item">
         <button class="accordion-button btn btn-primary" id="accordion-button-1">
@@ -128,6 +33,10 @@
 
         <button class="accordion-button btn btn-primary" id="accordion-button-4">
           OCOKA
+        </button>
+
+        <button class="accordion-button btn btn-primary" id="accordion-button-5">
+          Data Generator
         </button>
 
         <div class="accordion-content" id="accordion-content-1">
@@ -168,6 +77,42 @@
               <li>Issue Operation Order (OPORD)</li>
               <li>Supervise and Refine</li>
             </ol>
+        </div>
+        
+        <div class="accordion-content hidden" id="accordion-content-5">
+          <h2 class="text-2xl font-bold mb-4">Data Generator</h2>        
+<!--small-->
+<div class="container">
+  <h1> Small Deflection and Elevation Generator</h1>
+  <form action="javascript:void(0)">
+      <label for="deflection">Deflection:</label>
+      <input type="number" name="deflection" min="0" max="180" required>
+      <label for="elevation">Elevation:</label>
+      <input type="number" name="elevation" min="0" max="180" required>
+      <input type="button" value="Generate" onclick="generate()">
+  </form>
+  <div id="output"></div>
+</div>
+<script>
+  function generate() {
+      const deflection = parseInt(document.querySelector('input[name="deflection"]').value);
+      const elevation = parseInt(document.querySelector('input[name="elevation"]').value);
+      let output = '<table><tr><th>Deflection</th><th>Elevation</th></tr>';
+      for (let i = 0; i < 5; i++) {
+          const deflectionOffset = Math.floor(Math.random() * (60 - 30 + 1)) + 30;
+          const elevationOffset = Math.floor(Math.random() * (90 - 35 + 1)) + 35;
+          const resultDeflection = deflection + deflectionOffset;
+          const resultElevation = elevation + elevationOffset;
+          output += `<tr><td>${resultDeflection}</td><td>${resultElevation}</td></tr>`;
+      }
+      output += '</table>';
+      document.getElementById('output').innerHTML = output;
+  }
+</script>
+
+<!--small end-->
+
+
         </div>
 
         <div class="accordion-content hidden" id="accordion-content-4">
