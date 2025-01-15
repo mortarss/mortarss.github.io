@@ -1,0 +1,134 @@
+body {
+    background-color: #1a1d23;
+    color: #fff;
+  }
+
+  .flashcard {
+    width: 200px;
+    min-height: 150px; /* Use min-height instead of fixed height */
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    background-color: #2f343a;
+  }
+
+  .flashcard.flipped {
+    transform: rotateY(180deg);
+  }
+
+  .flashcard .front,
+  .flashcard .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 150px; /* Use min-height here as well */
+    backface-visibility: hidden;
+    background-color: #2f343a;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    justify-content: space-between; /* Distribute space between question/answer and button */
+  }
+
+  .flashcard .back {
+    transform: rotateY(180deg);
+  }
+
+  .flashcard .front p,
+  .flashcard .back p {
+    margin-bottom: 10px; /* Add some space between question and answer */
+    word-break: break-word; /* Allow long words to be broken and wrap onto the next line */
+  }
+
+  .flashcard .show-answer,
+  .flashcard .show-question {
+    cursor: pointer;
+    color: #337ab7;
+    margin-top: auto; /* Push the button to the bottom */
+  }
+
+  .flashcard .show-answer:hover,
+  .flashcard .show-question:hover {
+    text-decoration: underline;
+  }
+  .accordion-content {
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: #2f343a;
+  }
+
+  .accordion-content.hidden {
+    display: none;
+  }
+
+  .accordion-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #337ab7;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .accordion-button:hover {
+    background-color: #23527c;
+  }
+
+  .search-bar {
+    padding: 10px 20px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    width: 50%;
+    margin-bottom: 20px;
+    background-color: #2f343a;
+  }
+
+  /* */
+      label {
+          display: block;
+          margin-bottom: 10px;
+      }
+      input[type="number"] {
+          width: 100%;
+          height: 30px;
+          padding: 10px;
+          border: 1px solid #666;
+          border-radius: 5px;
+          background-color: #444;
+          color: #fff;
+      }
+      input[type="button"] {
+          width: 100%;
+          height: 30px;
+          background-color: #333;
+          color: #fff;
+          padding: 10px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+      }
+      #output {
+          margin-top: 20px;
+      }
+      table {
+          border-collapse: collapse;
+          width: 100%;
+      }
+      th, td {
+          border: 1px solid #666;
+          padding: 10px;
+          text-align: left;
+      }
+      th {
+          background-color: #555;
+      }
