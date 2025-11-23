@@ -25,50 +25,15 @@ const studyGuideData = {
             info: 'PRX: Proximity (air burst 3 to 13 feet above ground) <br> IMP: Impact (burst on contact) <br> DLY: Delay (0.05 seconds after impact) <br> Timed: Used to set for illumination rounds', 
             imageUrl: 'https://placehold.co/400x300/047857/e2e8f0?text=MORTAR+FUSE+TYPES' 
         },
-        'Sheaves - Converged': { 
-            title: 'Converged Sheaf', 
-            info: 'A pattern where the individual mortars are sighted to impact a single, specific **point** on the target. Used for maximum destruction or neutralization of small, critical targets.', 
-            imageUrl: 'images/imConverged.png' 
+        'Sheafs': { 
+            title: 'Sheafs', 
+            info: 'Converged <br> Linear <br> Parallel <br> Open <br> Special', 
+            imageUrl: 'images/sheaves.png' 
         },
-        'Sheaves - Linear': { 
-            title: 'Linear Sheaf', 
-            info: 'A pattern where the mortars impact along a **straight line**. Used to cover a trench, road, or narrow column of enemy troops. The impacts are distributed side-by-side.', 
-            imageUrl: 'images/Linear.png' 
-        },
-        'Sheaves - Parallel': { 
-            title: 'Parallel Sheaf', 
-            info: 'A pattern where the mortars impact in a series of **parallel lines**. Used for comprehensive coverage of a rectangular or square area target.', 
-            imageUrl: 'images/Parallel.png' 
-        },
-        'Sheaves - Open': { 
-            title: 'Open Sheaf', 
-            info: 'A pattern used to cover a wide, **irregularly shaped area**. The impacts are spaced out to suppress or harass dispersed enemy forces.', 
-            imageUrl: 'images/Open.png' 
-        },
-        'Sheaves - Special': { 
-            title: 'Special Sheaf', 
-            info: 'A **non-standard pattern** tailored for complex or uniquely shaped targets that requires custom fire commands.', 
-            imageUrl: 'images/Special.png' 
-        },
-        'Formations - Lazy W': { 
-            title: 'Lazy W Formation', 
-            info: 'A wide, shallow formation providing high volume fire over a large frontage. Difficult to mass fires quickly.', 
-            imageUrl: 'images/lazy_w.png' 
-        },
-        'Formations - Parallel': { 
-            title: 'Parallel Formation', 
-            info: 'Mortars are aligned parallel to the front, best for rapid shifting of fires and maximizing range capabilities.', 
-            imageUrl: 'images/Parallel for.png' 
-        },
-        'Formations - Diamond': { 
-            title: 'Diamond Formation', 
-            info: 'Provides maximum mutual support and defense; compact, but requires more precise terrain alignment.', 
-            imageUrl: 'images/Diamond.png' 
-        },
-        'Formations - Terrain': { 
-            title: 'Terrain Formation (Custom)', 
-            info: 'Mortars are placed based strictly on the available cover and concealment of the terrain, prioritizing protection over standard spacing.', 
-            imageUrl: 'images/Terrain.png' 
+        'Formations': { 
+            title: 'Formations', 
+            info: 'Lazy W <br> Parallel <br> Diamond <br> Terrain',
+            imageUrl: 'images/formations.png' 
         },
         'Missions': { 
             title: 'Missions', 
