@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTRS :: Future Ops Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Roboto:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* KEYFRAMES FOR ANIMATION */
+        @keyframes border-flicker {
+            0%, 100% { border-color: rgba(52, 211, 153, 0.5); }
+            50% { border-color: rgba(16, 185, 129, 0.8); }
+        }
+
+        /* BASE STYLES */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0d121c, #03070b); /* Atmospheric Background */
+            color: #e2e8f0; 
+            min-height: 100vh;
+        }
+
+        /* MAIN CALCULATOR BODY (Futuristic Card Style) */
+        .calculator-body {
+            /* Futuristic Card Styling: Glass-morphism + Animated Border */
+            background: rgba(13, 17, 23, 0.7); 
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            border: 2px solid;
+            animation: border-flicker 4s infinite alternate; 
+            transition: all 0.5s ease-in-out;
+            @apply p-6 md:p-10 rounded-xl shadow-2xl;
+        }
+        .calculator-body:hover {
+            box-shadow: 0 0 40px rgba(52, 211, 153, 0.5); /* Stronger hover glow */
+        }
+
+
+        /* DIGITAL DISPLAY AREA (Header/Input Screen) */
+        .display-screen {
+            background-color: rgba(13, 17, 23, 0.9); 
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            box-shadow: inset 0 0 10px rgba(16, 185, 129, 0.3);
+            @apply p-4 rounded-lg;
+        }
+        
+        /* Data Readout Font */
+        .data-font {
+            font-family: 'Space Mono', monospace;
+        }
+        .data-font-main {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* INPUT FIELDS */
+        .futuristic-input {
+            @apply w-full p-3 rounded-lg border border-gray-700 bg-gray-800 text-white placeholder-gray-500 focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-150 shadow-inner;
+            box-shadow: inset 0 0 5px rgba(16, 185, 129, 0.2);
+        }
+
+        /* KEYPAD STYLES (Sharper, more aggressive look) */
+        .btn-key {
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Lifted shadow */
+            position: relative;
+            overflow: hidden;
+            @apply font-orbitron;
+        }
+        /* Neon button hover effect */
+        .btn-key:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+        }
+        .btn-key:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Keypad Color Specific Glows */
+        /* Green Key */
+        .key-green {
+            background: linear-gradient(135deg, #10b981, #34d399);
+            border: 1px solid #a7f3d0;
+        }
+        .key-green:hover {
+            box-shadow: 0 0 20px rgba(52, 211, 153, 0.9);
+        }
+        /* Red Key */
+        .key-red {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            border: 1px solid #fca5a5;
+        }
+        .key-red:hover {
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.9);
+        }
+        /* Blue Key */
+        .key-blue {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border: 1px solid #93c5fd;
+        }
+        .key-blue:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.9);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10 min-h-screen flex items-center justify-center">
+
+    <div class="w-full max-w-4xl">
+        <header class="text-center mb-6">
+            <h1 class="text-5xl font-extrabold text-green-400 mb-2 tracking-widest font-orbitron">
+                <span class="text-green-500/80">//</span> MILS GENERATOR
+            </h1>
+            <p class="text-gray-400 text-base">Generate Data from desired Start Point</p>
+        </header>
+
+        <div class="calculator-body">
+
+            <div class="display-screen mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-green-300 font-orbitron">START CONFIGURATION</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <label class="block">
+                        <span class="text-gray-300 text-sm block mb-1">Deflection (Mils)</span>
+                        <input type="number" id="startDeflection" value="1000" placeholder="e.g., 1000"
+                               class="futuristic-input data-font">
+                    </label>
+                    <label class="block">
+                        <span class="text-gray-300 text-sm block mb-1">Elevation (Mils)</span>
+                        <input type="number" id="startElevation" value="5000" placeholder="e.g., 5000"
+                               class="futuristic-input data-font">
+                    </label>
+                </div>
+
+                <div id="dataOutput" class="overflow-x-auto rounded-lg border-2 border-green-700/50 bg-gray-900 shadow-inner">
+                    <p class="text-gray-500 text-center py-8 text-sm data-font">Select a profile below to generate data.</p>
+                </div>
+
+                <div id="messageBox" class="mt-4 hidden p-3 rounded-lg text-sm font-medium border data-font"></div>
+            </div>
+
+            <section>
+                <h2 class="text-2xl font-bold mb-4 text-gray-200 font-orbitron">GENERATION KEYS :: PROTOCOL SELECT</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <button onclick="generateData('small')" class="btn-key key-green text-white font-extrabold py-5 px-6 rounded-lg">
+                        <span class="block text-xl tracking-wider">SMALL DATA</span>
+                        <span class="block text-xs opacity-90 font-light mt-1 data-font">D: 20-60, E: 45-90</span>
+                        <span class="block text-xs opacity-70 data-font">Loop to Start</span>
+                    </button>
+                    <button onclick="generateData('large')" class="btn-key key-red text-white font-extrabold py-5 px-6 rounded-lg">
+                        <span class="block text-xl tracking-wider">LARGE DATA</span>
+                        <span class="block text-xs opacity-90 font-light mt-1 data-font">D: 200-300, E: 100-200</span>
+                        <span class="block text-xs opacity-70 data-font">Loop to Start</span>
+                    </button>
+                    <button onclick="generateData('sequential')" class="btn-key key-blue text-white font-extrabold py-5 px-6 rounded-lg">
+                        <span class="block text-xl tracking-wider">REFER</span>
+                        <span class="block text-xs opacity-90 font-light mt-1 data-font">D: $\pm 60$ / $\pm 5-25$ Alt</span>
+                        <span class="block text-xs opacity-70 data-font">Fixed Elevation</span>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        const dataOutput = document.getElementById('dataOutput');
+        const messageBox = document.getElementById('messageBox');
+        const startDeflectionInput = document.getElementById('startDeflection');
+        const startElevationInput = document.getElementById('startElevation');
+
+        /**
+         * Helper function to get a random integer within a range.
+         * @param {number} min - The minimum value (inclusive).
+         * @param {number} max - The maximum value (inclusive).
+         * @returns {number} A random integer.
+         */
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        /**
+         * Generates a random step change (positive or negative) within the specified range.
+         * @param {number} min - The minimum magnitude of the change.
+         * @param {number} max - The maximum magnitude of the change.
+         * @returns {number} The step change value.
+         */
+        function getRandomStep(min, max) {
+            let magnitude = getRandomInt(min, max);
+            // Randomly choose between positive or negative
+            return Math.random() < 0.5 ? magnitude : -magnitude;
+        }
+
+        /**
+         * Clears messages from the message box.
+         */
+        function clearMessage() {
+            messageBox.innerHTML = '';
+            messageBox.classList.add('hidden');
+        }
+
+        /**
+         * Displays a message in the message box.
+         * @param {string} msg - The message text.
+         * @param {string} type - 'success', 'error', or 'info'.
+         */
+        function showMessage(msg, type = 'info') {
+            messageBox.innerHTML = msg;
+            messageBox.classList.remove('hidden');
+            messageBox.className = 'mt-4 p-3 rounded-lg text-sm font-medium border data-font'; // Base classes
+            if (type === 'error') {
+                // Dark mode error colors (Red theme)
+                messageBox.classList.add('bg-red-900', 'text-red-300', 'border-red-700');
+            } else if (type === 'success') {
+                // Dark mode success colors (Emerald/Neon Green theme)
+                messageBox.classList.add('bg-emerald-900', 'text-emerald-300', 'border-emerald-700');
+            } else { // info (Gray/Blue accent)
+                messageBox.classList.add('bg-gray-800', 'text-gray-300', 'border-blue-600');
+            }
+        }
+
+
+        /**
+         * Main function to generate the data based on the selected mode.
+         * @param {string} mode - 'small', 'large', or 'sequential'.
+         */
+        function generateData(mode) {
+            clearMessage();
+
+            const D_start = parseFloat(startDeflectionInput.value);
+            const E_start = parseFloat(startElevationInput.value);
+
+            if (isNaN(D_start) || isNaN(E_start)) {
+                showMessage("ERROR: Please enter valid numerical values for Start Deflection and Start Elevation.", 'error');
+                return;
+            }
+
+            const dataSets = [];
+            let currentD = D_start;
+            let currentE = E_start;
+
+            // Set 1 is always the starting point
+            dataSets.push({ set: 1, deflection: currentD, elevation: currentE, changeD: 0, changeE: 0 });
+
+            if (mode === 'small' || mode === 'large') {
+                // Rules for Small Data: D_change [20, 60], E_change [45, 90]
+                // Rules for Large Data: D_change [200, 300], E_change [100, 200]
+
+                const D_min = mode === 'small' ? 20 : 200;
+                const D_max = mode === 'small' ? 60 : 300;
+                const E_min = mode === 'small' ? 45 : 100;
+                const E_max = mode === 'small' ? 90 : 200;
+
+                // Steps 1 & 2 are random, Steps 3 & 4 are the negation of 1 & 2 to ensure return to start.
+                
+                // 1. Generate 2 pairs of steps (S1, S2)
+                const steps = [];
+                for (let i = 0; i < 2; i++) {
+                    steps.push({
+                        d: getRandomStep(D_min, D_max),
+                        e: getRandomStep(E_min, E_max)
+                    });
+                }
+
+                // 2. Add negation steps (-S1, -S2)
+                steps.push({ d: -steps[0].d, e: -steps[0].e });
+                steps.push({ d: -steps[1].d, e: -steps[1].e });
+                
+                // 3. Shuffle the order of the 4 steps
+                for (let i = steps.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [steps[i], steps[j]] = [steps[j], steps[i]];
+                }
+
+
+                // 4. Apply the 4 steps to generate sets 2, 3, 4, 5
+                for (let i = 0; i < 4; i++) {
+                    const step = steps[i];
+                    currentD += step.d;
+                    currentE += step.e;
+                    dataSets.push({
+                        set: i + 2,
+                        // Rounding to 3 decimal places for display accuracy
+                        deflection: parseFloat(currentD.toFixed(3)),
+                        elevation: parseFloat(currentE.toFixed(3)),
+                        changeD: parseFloat(step.d.toFixed(3)),
+                        changeE: parseFloat(step.e.toFixed(3)),
+                    });
+                }
+
+                // Final check/fix to ensure Set 5 is exactly the start point 
+                // This ensures the training drill completes the loop correctly.
+                if (dataSets[4].deflection !== D_start || dataSets[4].elevation !== E_start) {
+                    dataSets[4].deflection = D_start;
+                    dataSets[4].elevation = E_start;
+                    // Adjust the final step to reflect the necessary correction to land exactly on D_start and E_start
+                    const previousD = dataSets[3].deflection;
+                    const previousE = dataSets[3].elevation;
+                    dataSets[4].changeD = parseFloat((D_start - previousD).toFixed(3));
+                    dataSets[4].changeE = parseFloat((E_start - previousE).toFixed(3));
+                }
+
+                showMessage(`SUCCESS: Generated 5 ${mode.toUpperCase()} data points. Last point returns to start.`, 'success');
+
+            } else if (mode === 'sequential') {
+                // Rules for Sequential Data: 
+                // Deflection changes: Step 1/3 is +/- 60. Step 2/4 is +/- [5, 25].
+                // Elevation remains at E_start (Change E is 0).
+
+                for (let i = 1; i <= 4; i++) {
+                    let stepD;
+
+                    if (i % 2 !== 0) { // Step 1 and 3: +/- 60
+                        stepD = Math.random() < 0.5 ? 60 : -60;
+                    } else { // Step 2 and 4: +/- [5, 25]
+                        stepD = getRandomStep(5, 25);
+                    }
+
+                    // Apply change
+                    currentD += stepD;
+                    currentE = E_start; // Elevation is fixed 
+
+                    dataSets.push({
+                        set: i + 1,
+                        deflection: parseFloat(currentD.toFixed(3)),
+                        elevation: parseFloat(currentE.toFixed(3)),
+                        changeD: parseFloat(stepD.toFixed(3)),
+                        changeE: 0,
+                    });
+                }
+                showMessage("SUCCESS: Generated 5 SEQUENTIAL data points. Elevation held constant.", 'success');
+            }
+            
+            displayData(dataSets);
+        }
+
+        /**
+         * Renders the generated data into a styled HTML table.
+         * @param {Array<Object>} data - The array of data objects.
+         */
+        function displayData(data) {
+            let tableHTML = `
+                <table class="min-w-full divide-y divide-green-700">
+                    <thead class="bg-gray-800 border-b border-green-500">
+                        <tr>
+                            <th class="px-3 py-3 text-center text-xs font-semibold text-green-400 uppercase tracking-wider data-font rounded-tl-lg">Set</th>
+                            <th class="px-3 py-3 text-center text-xs font-semibold text-green-400 uppercase tracking-wider data-font">Deflection (D)</th>
+                            <th class="px-3 py-3 text-center text-xs font-semibold text-green-400 uppercase tracking-wider data-font">Elevation (E)</th>
+                            <th class="px-3 py-3 text-center text-xs font-semibold text-green-400 uppercase tracking-wider data-font">Change D</th>
+                            <th class="px-3 py-3 text-center text-xs font-semibold text-green-400 uppercase tracking-wider data-font rounded-tr-lg">Change E</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-gray-900 divide-y divide-gray-800">
+            `;
+
+            data.forEach((item, index) => {
+                const isStartOrEnd = (index === 0 || index === data.length - 1);
+                // Highlight start/end points with a stronger background and border
+                const rowClass = isStartOrEnd ? 'bg-gray-700/70 font-bold border-t border-green-500' : (index % 2 === 0 ? 'bg-gray-900/90' : 'bg-gray-800/90');
+                
+                // Formatting change text
+                const changeDText = item.changeD > 0 ? `+${item.changeD}` : (item.changeD < 0 ? item.changeD : '0');
+                const changeEText = item.changeE > 0 ? `+${item.changeE}` : (item.changeE < 0 ? item.changeE : '0');
+                
+                tableHTML += `
+                    <tr class="${rowClass} transition-colors duration-200 hover:bg-gray-700/90">
+                        <td class="px-3 py-2 whitespace-nowrap text-sm text-green-400 text-center data-font">${item.set}</td>
+                        <td class="px-3 py-2 whitespace-nowrap text-base text-white text-center data-font">${item.deflection}</td>
+                        <td class="px-3 py-2 whitespace-nowrap text-base text-white text-center data-font">${item.elevation}</td>
+                        <td class="px-3 py-2 whitespace-nowrap text-sm text-center data-font ${item.changeD > 0 ? 'text-emerald-400' : (item.changeD < 0 ? 'text-rose-400' : 'text-gray-500')}">${changeDText}</td>
+                        <td class="px-3 py-2 whitespace-nowrap text-sm text-center data-font ${item.changeE > 0 ? 'text-emerald-400' : (item.changeE < 0 ? 'text-rose-400' : 'text-gray-500')}">${changeEText}</td>
+                    </tr>
+                `;
+            });
+
+            tableHTML += `
+                    </tbody>
+                </table>
+            `;
+            dataOutput.innerHTML = tableHTML;
+        }
+
+        // Initialize with a message
+        showMessage("INFO: Enter your starting Mils values above, then press a key below to generate data.", 'info');
+
+    </script>
+</body>
+</html>
