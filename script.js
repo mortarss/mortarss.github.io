@@ -153,10 +153,21 @@ const studyGuideData = {
 
 
     'Battle Drills': {
-        '1 through 1': { title: 'Drill 1: React to Direct Fire - Immediate Counter-Engagement', info: 'Standardized response to hostile fire: Return Fire, Take Cover, Gain Fire Superiority, Assess & Report. Execute with precision and speed to neutralize threat and regain initiative.', imageUrl: 'https://placehold.co/400x300/dc2626/e2e8f0?text=BATTLE+DRILL+1' },
-        '2': { title: 'Drill 2: Break Contact - Tactical Disengagement Protocol', info: 'Procedures for disengaging from hostile forces when withdrawal is optimal. Employs fire & movement, establishing support by fire to exfiltrate personnel and assets effectively.', imageUrl: 'https://placehold.co/400x300/f87171/e2e8f0?text=BATTLE+DRILL+2' },
-        '3': { title: 'Drill 3: React to Ambush (Near) - Kill Zone Breaching', info: 'Immediate action when within a kill zone: Return fire, assault through the ambush to exit the immediate threat, then consolidate and reorganize to assess casualties and new threats.', imageUrl: 'https://placehold.co/400x300/ef4444/e2e8f0?text=BATTLE+DRILL+3' },
-        '4': { title: 'Drill 4: React to Ambush (Far) - Remote Threat Neutralization', info: 'Response when engaged from outside the immediate kill zone: Return fire, establish cover, suppress enemy positions, and either bypass or neutralize the threat as per command directive.', imageUrl: 'https://placehold.co/400x300/fca5a5/e2e8f0?text=BATTLE+DRILL+4' },
+        '1': { title: 'Drill 1: React to Direct Fire', info: '', imageUrl: '' },
+        '2': { title: 'Drill 2: Conduct a Platoon Attack', info: '', imageUrl: '' },
+        '3': { title: 'Drill 3:  Break Contact', info: '', imageUrl: '' },
+        '4': { title: 'Drill 4: React to an Ambush', info: '', imageUrl: '' },
+        '5': { title: 'Drill 5:  Knock out a Bunker', info: '', imageUrl: '' },
+        '6': { title: 'Drill 6: Enter and Clear a  room ', info: '', imageUrl: '' },
+        '7': { title: 'Drill 7: Enter a Treanch to secure a foothold ', info: '', imageUrl: '' },
+        '8': { title: 'Drill 8: Conduct the initial Breach of a Mined Obstacle ', info: '', imageUrl: '' },
+        '9': { title: 'Drill 9: React to Indirect Fire ', info: '', imageUrl: '' },
+        '10': { title: 'Drill 10: React to Aircraft while Dismounted ', info: '', imageUrl: '' },
+        '11': { title: 'Drill 11: Establish Security at the Halt', info: '', imageUrl: '' },
+        '12': { title: 'Drill 12: Conduct A Hasty Attack', info: '', imageUrl: '' },
+        '13': { title: 'Drill 13: Dismount a Vehicle under Direct Fire', info: '', imageUrl: '' },
+        '14': { title: 'Drill 14: React to a chemical attack ', info: '', imageUrl: '' },
+        '15': { title: 'Drill 15: React to a chemical agent attack', info: '', imageUrl: '' },
     },
 
 
