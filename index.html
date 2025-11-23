@@ -1,24 +1,105 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        #description {
-            text-align: center;
-        }
-    </style>
+    <title>MTRS Study Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/heroicons@2.1.1/dist/umd/index.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Roboto:wght:300;400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <img src="faggtron.jpeg" width="300" alt="Thank You Image">
+
+    <nav class="header-nav sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative flex items-center justify-between h-20">
+                <h1 class="text-2xl sm:text-4xl font-extrabold text-green-400 tracking-widest font-orbitron">
+                    <span class="text-green-500/80">MTRS</span> Study Guide
+                </h1>
+
+                <div id="main-nav" class="flex space-x-3 py-2">
+                    </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        <div id="sub-nav-container" class="futuristic-card mb-8 hidden">
+            <h2 id="current-section-title" class="text-xl sm:text-3xl font-bold text-green-300 mb-4 pb-2 border-b-2 border-gray-700 font-orbitron flex items-center space-x-3">
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 sm:w-7 sm:h-7 text-green-500">
+                    <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                </svg>
+                <span>SECTION :: </span>
+            </h2>
+            <div id="sub-nav" class="flex flex-wrap gap-3 sm:gap-4">
+                </div>
+        </div>
+
+        <div id="content-display" class="futuristic-card min-h-[50vh] flex items-center justify-center">
+            <div id="initial-message" class="text-center p-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-20 w-20 text-green-500 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 20v-3m0 0l-1.5-1.5M12 17l1.5-1.5M12 17H9.5a3.5 3.5 0 00-.653-1.076l-1.762-1.762A3.5 3.5 0 003 12h-.5c-.276 0-.5-.224-.5-.5s.224-.5.5-.5H3a3.5 3.5 0 00-.653-1.076l-1.762-1.762A3.5 3.5 0 00.5 6V4a.5.5 0 011 0v2c0 1.25.96 2.375 2.25 2.5a.5.5 0 01-.25-1V7a.5.5 0 011 0v1.5a.5.5 0 01-.25 1c1.29.125 2.25 1.25 2.25 2.5a.5.5 0 01-.25 1c1.29.125 2.25 1.25 2.25 2.5a.5.5 0 01-.25 1C7.71 16.5 7 17.625 7 19v2a.5.5 0 011 0v-2c0-1.25.96-2.375 2.25-2.5a.5.5 0 01-.25-1V15a.5.5 0 011 0v1.5a.5.5 0 01-.25 1c1.29.125 2.25 1.25 2.25 2.5a.5.5 0 01-.25 1C12.29 20.5 13 21.625 13 23v.5c0 .276.224.5.5.5s.5-.224.5-.5V23c0-1.25-.96-2.375-2.25-2.5a.5.5 0 01.25-1V20a.5.5 0 01-1 0v-1.5a.5.5 0 01.25-1c-1.29-.125-2.25-1.25-2.25-2.5a.5.5 0 01.25-1C14.29 12.5 15 11.375 15 10V8a.5.5 0 01-1 0V9.5a.5.5 0 01.25 1c-1.29.125-2.25 1.25-2.25 2.5a.5.5 0 01.25 1C11.71 15.5 11 16.625 11 18v2.5a.5.5 0 011 0z" />
+                </svg>
+                <p class="mt-4 text-3xl font-extrabold text-green-300 font-orbitron">MTRS</p>
+                <p class="mt-2 text-lg text-gray-400">Select a section above to begin study protocol.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="futuristic-footer w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div class="md:col-span-1">
+                    <h4 class="text-xl font-extrabold text-green-400 tracking-wider font-orbitron mb-4">
+                        <span class="text-green-500/80">MTRS</span> Guide V1.0
+                    </h4>
+                    <p class="text-gray-400 text-sm">
+                        <span class="block">&copy; 2025 MTRS. All rights reserved.</span>
+                        <span class="block mt-1">DATA ACCESS: 11C</span>
+                    </p>
+                </div>
+                
+                <div class="md:col-span-2">
+                    <h4 class="text-xl font-bold text-green-300 mb-4 border-b-2 border-gray-700 pb-2 font-orbitron inline-block">
+                        // WANT TO ADD MOORE?
+                    </h4>
+                    <form id="feedbackForm" class="space-y-4 max-w-lg md:max-w-full mx-auto md:mx-0">
+                        <div>
+                            <label for="infoRequest" class="sr-only">Additional Information Request</label>
+                            <textarea id="infoRequest" name="infoRequest" rows="4" required
+                                class="w-full p-3 bg-gray-800 border border-green-600/50 text-gray-200 rounded-md focus:ring-green-500 focus:border-green-500 placeholder-gray-500"
+                                placeholder="Enter details for new information, corrections, or suggestions..."></textarea>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 items-center">
+                            <label for="captchaInput" id="captchaQuestion" class="font-bold text-lg text-yellow-400 whitespace-nowrap">
+                                CAPTCHA: ?
+                            </label>
+                            <input type="number" id="captchaInput" name="captchaInput" required
+                                class="w-full sm:w-1/3 p-3 bg-gray-800 border border-yellow-600/50 text-gray-200 rounded-md focus:ring-yellow-500 focus:border-yellow-500"
+                                placeholder="Answer">
+                        </div>
+
+                        <p id="formStatus" class="text-center font-bold"></p>
+
+                        <button type="submit"
+                            class="w-full sm:w-auto px-6 py-3 font-semibold tracking-wider text-black bg-green-500 rounded-md transition-all duration-300 hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900 shadow-lg hover:shadow-green-500/50 disabled:bg-gray-500 disabled:cursor-not-allowed"
+                            >
+                            SUBMIT REQUEST
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-8 pt-4 border-t border-gray-700 text-center">
+                 <p class="text-xs text-gray-500">
+                    <span class="text-green-600">Protocol Status:</span> Operational. <span class="text-yellow-600">Warning:</span> All submitted data is logged.
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
 </body>
 </html>
