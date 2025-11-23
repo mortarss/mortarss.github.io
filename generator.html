@@ -140,7 +140,7 @@
     <div class="w-full max-w-4xl">
         <header class="text-center mb-6">
             <h1 class="text-5xl font-extrabold text-green-400 mb-2 tracking-widest font-orbitron">
-                <span class="text-green-500/80">//</span> MILS GENERATOR
+                <span class="text-green-500/80">//</span> MISSION GENERATOR
             </h1>
             <p class="text-gray-400 text-base">Generate Data from desired Start Point</p>
         </header>
@@ -148,7 +148,7 @@
         <div class="calculator-body shadow-2xl"> 
 
             <div class="display-screen mb-8">
-                <h2 class="text-2xl font-bold mb-4 text-green-300 font-orbitron">START CONFIGURATION</h2>
+                <h2 class="text-2xl font-bold mb-4 text-green-300 font-orbitron">SET YOUR START POINT</h2>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                     <label class="block">
@@ -164,14 +164,14 @@
                 </div>
 
                 <div id="dataOutput" class="overflow-x-auto rounded-lg border-2 border-green-700/50 bg-gray-900 shadow-inner">
-                    <p class="text-gray-500 text-center py-8 text-sm data-font">Select a profile below to generate data.</p>
+                    <p class="text-gray-500 text-center py-8 text-sm data-font">Select Mission</p>
                 </div>
 
                 <div id="messageBox" class="mt-4 hidden p-3 rounded-lg text-sm font-medium border data-font"></div>
             </div>
 
             <section>
-                <h2 class="text-2xl font-bold mb-4 text-gray-200 font-orbitron">GENERATION KEYS :: PROTOCOL SELECT</h2>
+
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <button onclick="generateData('small')" class="btn-key key-green text-white font-extrabold py-5 px-6 rounded-lg font-orbitron">
                         <span class="block text-xl tracking-wider">SMALL DATA</span>
@@ -330,7 +330,7 @@
                     dataSets[4].changeE = parseFloat((E_start - previousE).toFixed(3));
                 }
 
-                showMessage(`SUCCESS: Generated 5 ${mode.toUpperCase()} data points. Last point returns to start.`, 'success');
+                showMessage(`SUCCESS: Generated 5 ${mode.toUpperCase()} Missions. Last one returns to start.`, 'success');
 
             } else if (mode === 'sequential') {
                 // Rules for Sequential Data: 
