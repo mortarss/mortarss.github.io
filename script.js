@@ -138,11 +138,8 @@ const studyGuideData = {
     
 
     'OPS': {
-        '5P’s': { title: '5 Paragraph OPORD (SMEAC) - Mission Directive Protocol', info: 'Standardized directive structure: Situation, Mission, Execution, Sustainment, Command & Signal. Ensures unambiguous communication of operational objectives and methodologies across all command echelons. Automate generation via tactical AI.', imageUrl: 'https://placehold.co/400x300/9d174d/e2e8f0?text=5+PARA+OPORD' },
-        'OCOKA': { title: 'OCOKA (Terrain Integration Matrix) - Environmental Exploitation', info: 'Analytical framework for terrain-centric operations: Observation & Fields of Fire, Cover & Concealment, Obstacles, Key Terrain, Avenues of Approach. Crucial for optimizing offensive and defensive postures.', imageUrl: 'https://placehold.co/400x300/be185d/e2e8f0?text=OCOKA+ANALYSIS' },
-        'GOTWA': { title: 'GOTWA (Leader Handoff Protocol) - Operational Continuity Assurance', info: 'Pre-departure brief: Going (destination), Others (personnel), Time (return estimate), What (contingency if no return), Actions (on contact/return). Ensures seamless command transition and accountability.', imageUrl: 'https://placehold.co/400x300/e879f9/e2e8f0?text=GOTWA+PROTOCOL' },
-        'Sport Report': { title: 'Spot Report / SALUTE - Rapid Threat Assessment', info: 'Expedited hostile contact report. SALUTE: Size, Activity, Location, Unit, Time, Equipment. Transmit immediately to higher command for real-time threat intelligence updates. Prioritize data integrity.', imageUrl: 'https://placehold.co/400x300/c026d3/e2e8f0?text=SALUTE+REPORT' },
-    },
+        '': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+},
 
 
     'Acronyms': {
