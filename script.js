@@ -138,7 +138,24 @@ const studyGuideData = {
     
 
     'OPS': {
-        '': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        '5P': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        'OCOKA': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        'GOTWA': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        'SPOT REPORT': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        'LACE REPORT': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        'MIST REPORT': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        'SLLS': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        'TLPS': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        'TTLODAC': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        '5P OPORD': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        '4 Marksmenship Fundamnetals': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        '6 Eelements of Call for fire': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        '8 Cycles of Fucntion': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        '9 line Medavac': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        '5s for POWS': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        '3 Movments Techniques': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        '2 Types of Bounding': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        '3 Types of Recon': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
 },
 
 
@@ -302,7 +319,7 @@ async function handleFormSubmit(event) {
         console.error('Fetch Error:', error);
     } finally {
         submitButton.disabled = false;
-        submitButton.textContent = 'SUBMIT PROTOCOL';
+        submitButton.textContent = 'SUBMIT REQUEST';
         generateCaptcha(); // Regenerate for next submission attempt
         setTimeout(() => {
             formStatus.textContent = ''; // Clear status after a delay
