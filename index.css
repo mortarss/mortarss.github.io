@@ -1,0 +1,159 @@
+/* KEYFRAMES FOR ANIMATION */
+@keyframes border-flicker {
+    0%, 100% { border-color: rgba(52, 211, 153, 0.5); }
+    50% { border-color: rgba(16, 185, 129, 0.8); }
+}
+
+/* BASE STYLES */
+body {
+    font-family: 'Roboto', sans-serif;
+    /* Deeper, more atmospheric background */
+    background: linear-gradient(135deg, #0d121c, #03070b); 
+    color: #e2e8f0; 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex-grow: 1;
+}
+
+/* 1. TOP NAVIGATION BUTTONS (Sharper, more geometric) */
+.nav-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: all 0.3s;
+    color: #fff;
+    border-bottom: 2px solid transparent;
+    background: none; 
+    border-radius: 0; /* Removing rounded edges for a sharper look */
+    position: relative;
+    /* Ensure buttons don't shrink too much on mobile */
+    flex-shrink: 0; 
+}
+.nav-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 80%;
+    height: 2px;
+    background-color: #10b981;
+    transition: transform 0.3s ease-in-out;
+}
+.nav-btn:hover::after {
+    transform: translateX(-50%) scaleX(1);
+}
+.nav-btn.active {
+    color: #34d399;
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(52, 211, 153, 0.7); /* Subtle text glow */
+}
+.nav-btn.active::after {
+    transform: translateX(-50%) scaleX(1);
+    background-color: #34d399;
+    height: 3px;
+    box-shadow: 0 0 10px rgba(52, 211, 153, 1);
+}
+
+/* Generator Button (Amber - different active state) */
+.generator-btn.active {
+    color: #fcd34d;
+    text-shadow: 0 0 8px rgba(252, 211, 77, 0.7);
+}
+
+/* Sub Navigation Buttons */
+.sub-nav-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.2s; 
+    border-radius: 0.5rem;
+    color: #d1d5db;
+    border: 1px solid #374151;
+    background-color: rgba(55, 65, 81, 0.3);
+}
+.sub-nav-btn:hover {
+    background-color: rgba(75, 85, 99, 0.5);
+    color: #fff;
+    transform: scale(1.05); /* Slight pop on hover */
+}
+.sub-nav-btn.active {
+    background-color: rgba(16, 185, 129, 0.7); 
+    color: white; 
+    border-color: #4ade80; 
+    font-weight: 700; 
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.6);
+    transform: scale(1.05); /* Slight pop when active */
+}
+/* END: Sub Navigation Buttons */
+
+/* Futuristic Card Styling */
+.futuristic-card {
+    /* Glass-morphism effect on backdrop */
+    background-color: rgba(17, 24, 39, 0.7);
+    backdrop-filter: blur(12px);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 40px rgba(52, 211, 153, 0.05);
+    /* Animated Border */
+    border: 2px solid;
+    animation: border-flicker 4s infinite alternate; 
+    transition: all 0.5s ease-in-out;
+}
+.futuristic-card:hover {
+    box-shadow: 0 0 40px rgba(52, 211, 153, 0.5); /* Stronger hover glow */
+}
+/* END: Futuristic Card Styling */
+
+.content-image {
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 40px rgba(52, 211, 153, 0.05);
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+    border: 2px solid #22c55e;
+    transition: transform 0.5s;
+}
+.content-image:hover {
+    box-shadow: 0 0 35px rgba(16, 185, 129, 0.8);
+    transform: scale(1.02) rotateZ(0.5deg);
+}
+
+/* 4. HEADER (Glass-morphism) */
+.header-nav {
+    background: rgba(13, 17, 23, 0.7); /* Reduced opacity for transparency */
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border-bottom: 2px solid rgba(52, 211, 153, 0.4);
+}
+
+/* Footer Custom Style */
+.futuristic-footer {
+    background-color: rgba(17, 24, 39, 0.8); 
+    backdrop-filter: blur(6px); 
+    padding: 1.5rem 0; 
+    margin-top: 3rem; 
+    border-top: 2px solid rgba(16, 185, 129, 0.25); 
+}
+
+/* Custom scrollbar for clean navigation on small screens */
+#main-nav {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+}
+
+#main-nav::-webkit-scrollbar {
+    height: 6px;
+}
+#main-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+#main-nav::-webkit-scrollbar-thumb {
+    background-color: #4ade80;
+    border-radius: 3px;
+    border: 1px solid #10b981;
+}
