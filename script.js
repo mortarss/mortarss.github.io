@@ -146,9 +146,26 @@ const studyGuideData = {
 
 
     'Acronyms': {
-        'RED': { title: 'RED (Restricted Engagement Directive)', info: 'Acronym for: Restricted Fire Line, Engagement Priority, Direction of Attack. Critical for deconfliction and precision targeting in contested zones. Adherence mandatory.', imageUrl: 'https://placehold.co/400x300/f59e0b/e2e8f0?text=RED+PROTOCOL' },
-        'LDA': { title: 'LDA (Linear Danger Area) - High-Threat Corridor', info: 'Defined as a movement corridor susceptible to enfilade fire due to linear characteristics (e.g., roads, ravines). Requires heightened situational awareness and accelerated traversal protocols.', imageUrl: 'https://placehold.co/400x300/d97706/e2e8f0?text=LDA+ALERT' },
-        'ODA': { title: 'ODA (Operational Detachment Alpha) - Specialized Unit Designation', info: 'Primarily refers to a 12-man Special Forces team, or "Offensive Defensive Action" in general tactical planning. Contextual understanding is key. High-value asset classification.', imageUrl: 'https://placehold.co/400x300/b45309/e2e8f0?text=ODA+UNIT' },
+        'RED': { title: 'RED', info: 'Risk Estimated Disatnce', imageUrl: '' }, 
+        'LDA': { title: 'LDA', info: 'Linear Danger Area', imageUrl: '' },
+        'ODA': { title: 'ODA', info: 'Open Danger Area', imageUrl: '' },
+        'LOA': { title: 'LOA', info: 'Limit of Advance', imageUrl: '' },
+        'LSCO': { title: 'LSCO', info: 'Large Scale Combat Operations', imageUrl: '' },
+        'COIN': { title: 'COIN', info: 'Counterinsurgency', imageUrl: '' },
+        'TCCC': { title: 'TCCC', info: 'Tactical Combat Casualty Care', imageUrl: '' },
+        'TAA': { title: 'TAA', info: 'Tactical Assembly Area', imageUrl: '' },
+        'LARS': { title: 'LARS', info: 'Left Add, Right Subtract', imageUrl: '' },
+        'RALS': { title: 'RALS', info: 'Right Add, Left Subtract', imageUrl: '' },
+        'BDA': { title: 'BDA', info: 'Battle Damage Assessment', imageUrl: '' },
+        'WARNO': { title: 'WARNO', info: 'Warning Order', imageUrl: '' },
+        'OPORD': { title: 'OPORD', info: 'Operations Order', imageUrl: '' },
+        'MFP': { title: 'MFP', info: 'Mortar Firing Point', imageUrl: '' },
+        'FDC': { title: 'FDC', info: 'Fire Direction Center', imageUrl: '' },
+        'FFE': { title: 'FFE', info: 'Fire for Effect', imageUrl: '' },
+        'PMCS': { title: 'PMCS', info: 'Preventative Maintenance Checks and Services', imageUrl: '' },
+        'MFCS': { title: 'MFCS', info: 'Mortar Fire Control System', imageUrl: '' },
+        'JBC-P': { title: 'JBC-P', info: 'Joint Battle Command - Platform', imageUrl: '' },
+        'PACE': { title: 'PACE', info: 'Primary, Alternative, Contigency, Emergency', imageUrl: '' },
     },
 
 
@@ -172,9 +189,9 @@ const studyGuideData = {
 
 
     '1064A1': {
-        'Combat Load': { title: 'M1064A1 Combat Load - Mission Critical Resource Matrix', info: 'Mandatory inventory of ammunition, specialized equipment, and personnel gear for the M1064A1 mortar carrier. Ensures operational longevity and readiness for extended engagements.', imageUrl: 'https://placehold.co/400x300/065f46/e2e8f0?text=1064A1+COMBAT+LOAD' },
-        'TM': { title: 'M1064A1 Technical Manual (TM) - System Diagnostics & Protocol', info: 'The official digital archive containing all operational, maintenance, and diagnostic protocols for the M1064A1. Essential for crew proficiency and rapid repair.', imageUrl: 'https://placehold.co/400x300/047857/e2e8f0?text=1064A1+TM' },
-        'Fluids and Levels': { title: 'M1064A1 Fluids & Levels - Sustained Operational Readiness', info: 'Pre-deployment and periodic checks for fuel, engine lubricants, hydraulic systems, coolant, and power cell electrolyte. Critical for preventing system failure and ensuring mission success.', imageUrl: 'https://placehold.co/400x300/064e3b/e2e8f0?text=1064A1+FLUIDS' },
+        'Combat Load': { title: 'M1064A1 Combat Load ', info: 'Horizontal Racks <br>  Vertical Racks', imageUrl: 'https://placehold.co/400x300/065f46/e2e8f0?text=1064A1+COMBAT+LOAD' },
+        'TM': { title: 'TM', info: 'TM', imageUrl: 'https://placehold.co/400x300/047857/e2e8f0?text=1064A1+TM' },
+        'Fluids and Levels': { title: 'M1064A1 Fluids & Levels ', info: '1540: Engine, Transmition, Final Drives <br> FRH: Ramp <br> Coolant: ', imageUrl: 'https://placehold.co/400x300/064e3b/e2e8f0?text=1064A1+FLUIDS' },
     },
     // 'Generator' is handled by a link to generator.html
 };
