@@ -266,11 +266,11 @@ async function handleFormSubmit(event) {
     }
 
     const payload = {
-        username: "MTRS Study Hub Feedback Bot",
+        username: "MTRS Requestt",
         avatar_url: "https://i.imgur.com/vH97NfH.png", // Optional: Use a cool icon URL
         embeds: [
             {
-                title: "New Data Upload Request",
+                title: "New Request",
                 description: infoRequest.substring(0, 2048), // Discord embed limit is 2048
                 color: 3066993, // Green color code
                 fields: [
@@ -305,7 +305,7 @@ async function handleFormSubmit(event) {
         });
 
         if (response.ok) {
-            formStatus.textContent = 'SUCCESS: Data Upload Protocol Complete.';
+            formStatus.textContent = 'SUCCESS: Request Sent.';
             formStatus.className = 'text-green-500 font-bold text-center';
             feedbackForm.reset();
         } else {
@@ -368,6 +368,13 @@ function renderMainNav() {
     generatorLink.className = 'nav-btn generator-btn'; 
     generatorLink.textContent = 'Generator';
     mainNavContainer.appendChild(generatorLink);
+
+    // Add the special 'Flash Cards' link (Separate Page)
+    const flashcardsLink = document.createElement('a');
+    flashcardsLink.href = 'flashcards.html'; 
+    flashcardsLink.className = 'nav-btn generator-btn'; 
+    flashcardsLink.textContent = 'Flash Cards';
+    mainNavContainer.appendChild(flashcardsLink);
 }
 
 /**
