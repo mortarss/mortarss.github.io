@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTRS :: FLASH CARDS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Roboto:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* KEYFRAMES FOR ANIMATION */
+        @keyframes border-flicker {
+            0%, 100% { border-color: rgba(52, 211, 153, 0.5); }
+            50% { border-color: rgba(16, 185, 129, 0.8); }
+        }
+
+        /* BASE STYLES */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0d121c, #03070b); /* Atmospheric Background */
+            color: #e2e8f0; 
+            min-height: 100vh;
+        }
+
+        /* MAIN STUDY BODY (Futuristic Card Style) */
+        .calculator-body {
+            /* Futuristic Card Styling: Glass-morphism + Animated Border */
+            background: rgba(13, 17, 23, 0.7); 
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            border: 2px solid;
+            animation: border-flicker 4s infinite alternate; 
+            transition: all 0.5s ease-in-out;
+            
+            /* Tailwind Classes: p-6 md:p-10 rounded-xl shadow-2xl */
+            padding: 1.5rem; /* p-6 */
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* shadow-2xl */
+        }
+        @media (min-width: 768px) {
+             .calculator-body {
+                padding: 2.5rem; /* md:p-10 */
+            }
+        }
+        .calculator-body:hover {
+            box-shadow: 0 0 40px rgba(52, 211, 153, 0.5); /* Stronger hover glow */
+        }
+
+
+        /* DIGITAL DISPLAY AREA (Question/Answer Screen) */
+        .display-screen {
+            background-color: rgba(13, 17, 23, 0.9); 
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            box-shadow: inset 0 0 10px rgba(16, 185, 129, 0.3);
+            
+            /* Tailwind Classes: p-4 rounded-lg */
+            padding: 1rem; /* p-4 */
+            border-radius: 0.5rem; /* rounded-lg */
+            min-height: 200px; /* Ensure visibility */
+        }
+        
+        /* Data Readout Font */
+        .data-font {
+            font-family: 'Space Mono', monospace;
+        }
+        .data-font-main {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* KEYPAD STYLES (Sharper, more aggressive look) */
+        .btn-key {
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Lifted shadow */
+            position: relative;
+            overflow: hidden;
+            font-family: 'Orbitron', sans-serif;
+        }
+        /* Neon button hover effect */
+        .btn-key:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+        }
+        .btn-key:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Keypad Color Specific Glows */
+        /* Green Key (Show/Correct) */
+        .key-green {
+            background: linear-gradient(135deg, #10b981, #34d399);
+            border: 1px solid #a7f3d0;
+        }
+        .key-green:hover {
+            box-shadow: 0 0 20px rgba(52, 211, 153, 0.9);
+        }
+        /* Red Key (Next/Incorrect) */
+        .key-red {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            border: 1px solid #fca5a5;
+        }
+        .key-red:hover {
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.9);
+        }
+        /* Blue Key (Reset/Info) */
+        .key-blue {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border: 1px solid #93c5fd;
+        }
+        .key-blue:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.9);
+        }
+
+        /* Custom utility for hidden state */
+        .hidden-answer {
+            filter: blur(8px);
+            transition: filter 0.5s ease-in-out;
+        }
+        .visible-answer {
+            filter: blur(0);
+            transition: filter 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10 min-h-screen flex items-center justify-center">
+
+    <div class="w-full max-w-4xl">
+        <header class="text-center mb-6">
+            <h1 class="text-5xl font-extrabold text-blue-400 mb-2 tracking-widest font-orbitron">
+                <span class="text-blue-500/80">&lt;</span> FLASH CARDS
+            </h1>
+            <p class="text-gray-400 text-base">TEST YOUR KNOWLEDGE</p>
+        </header>
+
+        <div class="calculator-body shadow-2xl">
+
+            <div class="display-screen mb-8 flex flex-col justify-between">
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold mb-4 text-green-300 font-orbitron flex justify-between items-center">
+                        <span id="cardHeader">QUESTION // </span>
+                        <span id="cardCounter" class="text-sm text-gray-400 data-font"></span>
+                    </h2>
+
+                    <!-- Question Area -->
+                    <div id="questionText" class="text-lg md:text-xl text-white data-font mb-6">
+                        <!-- Question content will be injected here -->
+                    </div>
+                </div>
+
+                <!-- Answer Area (Initially hidden/blurred) -->
+                <div id="answerSection">
+                    <h3 class="text-sm font-semibold text-red-400 uppercase tracking-widest font-orbitron mb-2">:: ANSWER ::</h3>
+                    <div id="answerText" class="text-lg md:text-xl text-yellow-300 data-font p-3 bg-gray-900/50 rounded-md hidden-answer">
+                        <!-- Answer content will be injected here -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="messageBox" class="mt-4 hidden p-3 rounded-lg text-sm font-medium border data-font mb-8"></div>
+
+            <section>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <button id="showBtn" onclick="toggleAnswer(true)" class="btn-key key-green text-white font-extrabold py-5 px-6 rounded-lg font-orbitron col-span-2">
+                        <span class="block text-xl tracking-wider">ANSWER</span>
+                        <span class="block text-xs opacity-90 font-light mt-1 data-font">Compare your answer</span>
+                    </button>
+                    
+                    <button id="nextBtn" onclick="nextCard()" class="btn-key key-red text-white font-extrabold py-5 px-6 rounded-lg font-orbitron">
+                        <span class="block text-xl tracking-wider">NEXT CARD</span>
+                        <span class="block text-xs opacity-90 font-light mt-1 data-font">Continue</span>
+                    </button>
+                    
+                    <button onclick="resetApp()" class="btn-key key-blue text-white font-extrabold py-5 px-6 rounded-lg font-orbitron">
+                        <span class="block text-xl tracking-wider">RESET</span>
+                        <span class="block text-xs opacity-90 font-light mt-1 data-font">Restart Review</span>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // --- DATA MODEL (Flashcards) ---
+        const flashcards = [
+            {
+                question: "Whats the min and max range of a 120mm mortar?",
+                answer: "The minimum range of a 120mm mortar is 200 meters and the maximum range is 7200 meters.",
+                topic: "Mortar Specifications"
+            },
+        
+        ];
+
+        // --- DOM Elements ---
+        const questionText = document.getElementById('questionText');
+        const answerText = document.getElementById('answerText');
+        const cardHeader = document.getElementById('cardHeader');
+        const cardCounter = document.getElementById('cardCounter');
+        const showBtn = document.getElementById('showBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const messageBox = document.getElementById('messageBox');
+        
+        // --- State Variables ---
+        let currentCardIndex = 0;
+        let isAnswerVisible = false;
+
+        /**
+         * Utility function to display a message.
+         * @param {string} msg - The message text.
+         * @param {string} type - 'success', 'error', or 'info'.
+         */
+        function showMessage(msg, type = 'info') {
+            messageBox.innerHTML = msg;
+            messageBox.classList.remove('hidden');
+            messageBox.className = 'mt-4 p-3 rounded-lg text-sm font-medium border data-font mb-8'; 
+            if (type === 'error') {
+                messageBox.classList.add('bg-red-900', 'text-red-300', 'border-red-700');
+            } else if (type === 'success') {
+                messageBox.classList.add('bg-emerald-900', 'text-emerald-300', 'border-emerald-700');
+            } else { // info (Gray/Blue accent)
+                messageBox.classList.add('bg-gray-800', 'text-gray-300', 'border-blue-600');
+            }
+        }
+
+        /**
+         * Loads and displays the current question and topic.
+         */
+        function loadCard() {
+            if (currentCardIndex >= flashcards.length) {
+                // If we've finished, reset the index for loop display
+                currentCardIndex = 0; 
+                showMessage("SEQUENCE COMPLETE: Cycle restarted. Reviewing from the beginning.", 'success');
+            }
+
+            const card = flashcards[currentCardIndex];
+            
+            // Update Question
+            questionText.innerHTML = card.question;
+            
+            // Update Answer (always load the answer, but keep it hidden/blurred)
+            answerText.innerHTML = card.answer;
+            
+            // Update Headers/Counters
+            cardHeader.textContent = `${card.topic.toUpperCase()} // `;
+            cardCounter.textContent = `[${currentCardIndex + 1}/${flashcards.length}]`;
+
+            // Reset visibility
+            toggleAnswer(false);
+
+            // Hide the 'Show Answer' button if the answer is already visible
+            showBtn.disabled = false;
+            showBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+
+        /**
+         * Toggles the visibility and blur effect of the answer.
+         * @param {boolean} visible - True to show, False to hide/blur.
+         */
+        function toggleAnswer(visible) {
+            isAnswerVisible = visible;
+
+            if (visible) {
+                answerText.classList.remove('hidden-answer');
+                answerText.classList.add('visible-answer');
+                showBtn.disabled = true;
+                showBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            } else {
+                answerText.classList.remove('visible-answer');
+                answerText.classList.add('hidden-answer');
+                showBtn.disabled = false;
+                showBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        }
+
+        /**
+         * Moves to the next card in the sequence.
+         */
+        function nextCard() {
+            currentCardIndex++;
+            loadCard();
+            // Clear message box on successful card load
+            messageBox.classList.add('hidden');
+        }
+
+        /**
+         * Resets the entire review sequence to the first card.
+         */
+        function resetApp() {
+            currentCardIndex = 0;
+            loadCard();
+            showMessage("Whats your best guess ?", 'info');
+        }
+
+        // --- Initialization ---
+        window.onload = function() {
+            resetApp();
+        };
+
+    </script>
+</body>
+</html>
