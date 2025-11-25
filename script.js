@@ -60,11 +60,8 @@ const studyGuideData = {
             info: 'The minimum vertical and horizontal clearance required for safe firing operations to ensure the trajectory clears all obstacles.', 
             imageUrl: 'https://placehold.co/400x300/111111/e2e8f9?text=MASK+OVERHEAD' 
         },
-    }, // END of 'Mortar Knowledge'
+    }, 
     
-
-
-    // --- START of Land Nav, OPS, Acronyms, Battle Drills, 1064A1 - Now correctly placed in the main object ---
   'Land Nav': {
         'Major': { 
             title: 'Major Terrain Features', 
@@ -132,10 +129,6 @@ const studyGuideData = {
             imageUrl: 'https://placehold.co/400x300/f87171/1f2937?text=OBSTACLE+BYPASS' 
         },
     },
-
-
-
-    
 
     'OPS': {
         '5P': { title: '5 Principals of Patrolling', info: 'Planning <br> Reconnaissance <br> Security <br> Control <br> Common Sense', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=5s' }, 
@@ -207,7 +200,7 @@ const studyGuideData = {
         'TM': { title: 'TM', info: 'TM', imageUrl: 'https://placehold.co/400x300/047857/e2e8f0?text=1064A1+TM' },
         'Fluids and Levels': { title: 'M1064A1 Fluids & Levels ', info: '1540: Engine, Transmition, Final Drives <br> FRH: Ramp <br> Coolant: ', imageUrl: 'https://placehold.co/400x300/064e3b/e2e8f0?text=1064A1+FLUIDS' },
     },
-    // 'Generator' is handled by a link to generator.html
+    
 };
 
 const mainNavContainer = document.getElementById('main-nav');
@@ -335,7 +328,7 @@ async function handleFormSubmit(event) {
 function storeInitialContent() {
     const initialMessageElement = document.getElementById('initial-message');
     if (initialMessageElement) {
-        initialMessageElement.querySelector('p:last-child').textContent = 'Select a section above to begin study protocol.';
+        initialMessageElement.querySelector('p:last-child').textContent = 'Select a section above to begin studying.';
         initialMessageHTML = initialMessageElement.innerHTML;
     }
 }
