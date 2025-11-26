@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MTRS :: Future Ops Generator</title>
+    <title>MTRS Study Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Roboto:wght
 :300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -133,6 +133,20 @@
         .key-blue:hover {
             box-shadow: 0 0 20px rgba(59, 130, 246, 0.9);
         }
+
+        /* Style for the new index button */
+        .btn-index {
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(90deg, #1f2937, #374151); /* Darker background */
+            border: 1px solid #4b5563;
+        }
+        .btn-index:hover {
+            background: linear-gradient(90deg, #2563eb, #3b82f6); /* Blue glow on hover */
+            border-color: #3b82f6;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.7);
+            transform: scale(1.02);
+        }
     </style>
 </head>
 <body class="p-4 md:p-10 min-h-screen flex items-center justify-center">
@@ -191,7 +205,13 @@
                 </div>
             </section>
         </div>
-    </div>
+
+        <div class="mt-8 text-center">
+            <a href="index.html" class="inline-block btn-index text-white font-bold py-3 px-8 rounded-lg uppercase tracking-wider text-sm font-orbitron">
+                &#9664; Back
+            </a>
+        </div>
+        </div>
 
     <script>
         const dataOutput = document.getElementById('dataOutput');
