@@ -217,10 +217,10 @@ const formStatus = document.getElementById('formStatus');
 const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1435806943812780164/MfjsECMOSksuchvfrpEktAJewoQ6xm7FiNDg9gz2QyqIOyXG6q22RblccWB5fvNDCqju'; 
 
 let activeSection = null;
-let initialMessageHTML = ''; 
+let initialContentHTML = ''; // RENAMED: Use 'initialContentHTML' for clarity
 let captchaAnswer = 0; // Stores the correct answer
 
-// --- CAPTCHA & FORM LOGIC ---
+// --- CAPTCHA & FORM LOGIC (No changes needed) ---
 
 /**
  * Generates a simple addition CAPTCHA (e.g., 5 + 3) and updates the UI.
@@ -323,13 +323,22 @@ async function handleFormSubmit(event) {
 // --- NAVIGATION & CONTENT LOGIC ---
 
 /**
- * Stores the initial content message to be reused when switching sections.
+ * Stores the initial content message (now the centered image) to be reused when switching sections.
  */
 function storeInitialContent() {
-    const initialMessageElement = document.getElementById('initial-message');
-    if (initialMessageElement) {
-        initialMessageElement.querySelector('p:last-child').textContent = 'Select a section above to begin studying.';
-        initialMessageHTML = initialMessageElement.innerHTML;
+    // ⚠️ Updated to find the initial image container (assuming ID is initial-image-container)
+    const initialContentElement = document.getElementById('initial-image-container');
+    if (initialContentElement) {
+        // Save the HTML structure that displays the initial image
+        initialContentHTML = initialContentElement.outerHTML; 
+        
+        // Remove the element from the display immediately after saving it
+        // so it's only rendered once by the HTML, and then injected by JS later.
+        // If you prefer to keep it visible until the first click, skip this line.
+        // initialContentElement.remove(); 
+    } else {
+        // Fallback/Warning if the initial image container is not found
+        console.warn("MTRS Study Hub: Initial image container not found. Content will be empty until a section is selected.");
     }
 }
 
@@ -386,8 +395,8 @@ function showSubNav(section) {
     subNavDiv.innerHTML = ''; 
     subNavContainerDiv.classList.remove('hidden');
     
-    // Reset content display to the initial message
-    contentDisplay.innerHTML = `<div id="initial-message" class="text-center p-4">${initialMessageHTML}</div>`; 
+    // ⚠️ Updated to use the stored initial content (the image)
+    contentDisplay.innerHTML = initialContentHTML; 
 
     Object.keys(studyGuideData[section]).forEach(subsection => {
         const button = document.createElement('button');
@@ -437,8 +446,9 @@ function displayContent(section, subsection) {
         </div>
     `;
     
-    // Remove the initial message element if it exists
-    const initialWrapper = document.getElementById('initial-message');
+    // ⚠️ Updated the ID to target the new initial image container
+    // This step is critical to remove the initial content when actual study content loads.
+    const initialWrapper = document.getElementById('initial-image-container');
     if(initialWrapper) {
         initialWrapper.remove();
     }
