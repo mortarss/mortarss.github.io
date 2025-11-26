@@ -17,7 +17,7 @@ const studyGuideData = {
         },
         'Round Types': { 
             title: 'Rounds', 
-            info: 'HE: High Explosive <br> WP: White Phosphorus <br> Illumination <br> IR Illum', 
+            info: 'HE: High Explosive <br> WP: White Phosphorus <br> Illumination <br> IR Illum <br> FRTR', 
             imageUrl: 'https://placehold.co/400x300/047857/e2e8f0?text=MORTAR+ROUND+TYPES' 
         },
         'Fuse Types': { 
