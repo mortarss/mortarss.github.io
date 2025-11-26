@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MTRS :: Knowledge Terminal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Roboto:wght[400;700]&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Roboto:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* KEYFRAMES FOR ANIMATION */
         @keyframes border-flicker {
@@ -38,8 +38,8 @@
         }
         @media (min-width: 768px) {
              .calculator-body {
-                padding: 2.5rem; /* md:p-10 */
-            }
+                 padding: 2.5rem; /* md:p-10 */
+             }
         }
         .calculator-body:hover {
             box-shadow: 0 0 40px rgba(52, 211, 153, 0.5); /* Stronger hover glow */
@@ -128,13 +128,32 @@
         .qa-list-item:last-child {
             border-bottom: none;
         }
+
+        /* New custom style for the index button to match the theme */
+        .btn-index {
+            background-color: rgba(30, 41, 59, 0.8); /* Slate-800 equivalent */
+            border: 1px solid #3b82f6; /* Key-blue border */
+            color: #93c5fd; /* Key-blue light text */
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            font-family: 'Orbitron', sans-serif;
+            text-decoration: none; /* Remove underline */
+            display: block; /* Make it take full width */
+            text-align: center;
+        }
+
+        .btn-index:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.9);
+            transform: translateY(-2px);
+            color: #fff;
+        }
     </style>
 </head>
 <body class="p-4 md:p-10 min-h-screen flex items-center justify-center">
 
     <div class="w-full max-w-4xl">
         <header class="text-center mb-6">
-            <h1 class="text-5xl font-extrabold text-blue-400 mb-2 tracking-widest font-orbitron">
+            <h1 class="text-4xl xs:text-4xl sm:text-5xl font-extrabold text-blue-400 mb-2 tracking-widest data-font-main">
                 <span class="text-blue-500/80">&lt;</span> FLASH CARDS
             </h1>
             <p class="text-gray-400 text-base">TEST YOUR KNOWLEDGE</p>
@@ -145,7 +164,7 @@
             <div id="flashcardView">
                 <div class="display-screen mb-8 flex flex-col justify-between">
                     <div>
-                        <h2 class="text-xl md:text-2xl font-bold mb-4 text-green-300 font-orbitron flex justify-between items-center">
+                        <h2 class="text-xl md:text-2xl font-bold mb-4 text-green-300 data-font-main flex justify-between items-center">
                             <span id="cardHeader">QUESTION // </span>
                             <span id="cardCounter" class="text-sm text-gray-400 data-font"></span>
                         </h2>
@@ -155,7 +174,7 @@
                     </div>
 
                     <div id="answerSection">
-                        <h3 class="text-sm font-semibold text-red-400 uppercase tracking-widest font-orbitron mb-2">:: ANSWER ::</h3>
+                        <h3 class="text-sm font-semibold text-red-400 uppercase tracking-widest data-font-main mb-2">:: ANSWER ::</h3>
                         <div id="answerText" class="text-lg md:text-xl text-yellow-300 data-font p-3 bg-gray-900/50 rounded-md hidden-answer">
                             </div>
                     </div>
@@ -163,7 +182,7 @@
             </div>
 
             <div id="listView" class="display-screen mb-8 hidden overflow-y-auto max-h-96">
-                <h2 class="text-2xl font-bold mb-4 text-blue-400 font-orbitron">:: KNOWLEDGE ARCHIVE ::</h2>
+                <h2 class="text-2xl font-bold mb-4 text-blue-400 data-font-main">:: KNOWLEDGE ARCHIVE ::</h2>
                 <div id="qaListContainer">
                     </div>
             </div>
@@ -171,248 +190,72 @@
             <div id="messageBox" class="mt-4 hidden p-3 rounded-lg text-sm font-medium border data-font mb-8"></div>
 
             <section>
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
-                    <button id="showBtn" onclick="toggleAnswer(true)" class="btn-key key-green text-white font-extrabold py-5 px-6 rounded-lg font-orbitron col-span-2 md:col-span-1">
+                <div class="grid grid-cols-4 md:grid-cols-5 gap-6">
+                    <button id="showBtn" onclick="toggleAnswer(true)" class="btn-key key-green text-white font-extrabold py-5 px-6 rounded-lg data-font-main col-span-2 md:col-span-1">
                         <span class="block text-xl tracking-wider">ANSWER</span>
                         <span class="block text-xs opacity-90 font-light mt-1 data-font">Compare</span>
                     </button>
                     
-                    <button id="nextBtn" onclick="nextCard()" class="btn-key key-red text-white font-extrabold py-5 px-6 rounded-lg font-orbitron col-span-2 md:col-span-1">
+                    <button id="nextBtn" onclick="nextCard()" class="btn-key key-red text-white font-extrabold py-5 px-6 rounded-lg data-font-main col-span-2 md:col-span-1">
                         <span class="block text-xl tracking-wider">NEXT CARD</span>
                         <span class="block text-xs opacity-90 font-light mt-1 data-font">Continue</span>
                     </button>
 
-                    <button onclick="toggleListView()" class="btn-key key-blue text-white font-extrabold py-5 px-6 rounded-lg font-orbitron col-span-1">
+                    <button onclick="toggleListView()" class="btn-key key-blue text-white font-extrabold py-5 px-6 rounded-lg data-font-main col-span-2 md:col-span-1">
                         <span id="listBtnText" class="block text-xl tracking-wider">VIEW LIST</span>
                         <span class="block text-xs opacity-90 font-light mt-1 data-font">All Q/A</span>
                     </button>
                     
-                    <button onclick="resetApp()" class="btn-key key-blue text-white font-extrabold py-5 px-6 rounded-lg font-orbitron col-span-2 md:col-span-1">
+                    <button onclick="resetApp()" class="btn-key key-blue text-white font-extrabold py-5 px-6 rounded-lg data-font-main col-span-2 md:col-span-2">
                         <span class="block text-xl tracking-wider">RESET</span>
                         <span class="block text-xs opacity-90 font-light mt-1 data-font">Restart Review</span>
                     </button>
                 </div>
             </section>
         </div>
+        
+        <a href="index.html" class="btn-index mt-6 py-4 rounded-lg text-lg uppercase font-extrabold tracking-wider">
+            &#9664; BACK
+        </a>
     </div>
 
     <script>
         // --- DATA MODEL (Flashcards) ---
         const flashcards = [
-            {
-                question: "Whats the min and max range of a 120mm mortar?",
-                answer: "The minimum range of a 120mm mortar is 200 meters and the maximum range is 7200 meters.",
-                topic: "120mm"
-            },
-
-             {
-                question: "What is the kill radius of the HE 120mm mortar round?",
-                answer: "70m to 75m",
-                topic: "Rounds"
-            },
-
-              {
-                question: "What is the nomenclature of the 120mm bipod ground mounted?",
-                answer: "M190",
-                topic: "120mm"
-            },
-
-                          {
-                question: "What is the nomenclature of the sight ?",
-                answer: "M67",
-                topic: "General"
-            },
-
-                          {
-                question: "What is the nomenclature of the 120mm baseplate?",
-                answer: "M9",
-                topic: "120mm"
-            },
-
-
-                          {
-                question: "What is the nomenclature of the 120mm mortar tube?",
-                answer: "M298",
-                topic: "120mm"
-            },
-
-                          {
-                question: "What is the nomenclature of the bore sight?",
-                answer: "M45",
-                topic: "General"
-            },
-
-                          {
-                question: "When bore sighting a mortar system, what should the elevation be set on?",
-                answer: "0800",
-                topic: "General"
-            },
-
-                          {
-                question: "What does the bore sight detect?",
-                answer: "Error on the sight",
-                topic: "General"
-            },
-
-                          {
-                question: "How many different round types are there for the 120mm mortar system?",
-                answer: "5: HE, WP, Illum, FRTR, IR Illum",
-                topic: "120mm"
-            },
-
-                          {
-                question: "What are the NATO color markings of HE rounds?",
-                answer: "Olive drab, yellow markings",
-                topic: "Rounds"
-            },
-
-                          {
-                question: "What are the NATO color markings of Illumination rounds?",
-                answer: "White, black markings",
-                topic: "Roundss"
-            },
-
-                          {
-                question: "What are the NATO color markings on the white phosphorus rounds?",
-                answer: "Light green, black markings",
-                topic: "Rounds"
-            },
-
-                          {
-                question: "When should you swab the tube?",
-                answer: "Every 10 rounds or when FDC calls EOM (End of Mission)",
-                topic: "General"
-            },
-
-                          {
-                question: "What mortar equipment contains tritium?",
-                answer: "Sight, pole lights, 60mm cannon handle, M2 Compass",
-                topic: "General"
-            },
-
-                          {
-                question: "What is the Maximum range of the 81mm mortar system?",
-                answer: "5608m",
-                topic: "81mm"
-            },
-
-                          {
-                question: "What is the minimum range of the 81mm mortar system?",
-                answer: "85m ask",
-                topic: "81mm"
-            },
-            
-
-                                      {
-                question: "What is the kill radius of the 81mm mortar system?",
-                answer: "35m-40m",
-                topic: "81mm"
-            },
-            
-
-                                      {
-                question: "What is the nomenclature of the 81mm bipod?",
-                answer: "M177A1",
-                topic: "81mm"
-            },
-            
-
-                                      {
-                question: "What is the nomenclature of the 81mm baseplate?",
-                answer: "M3A2",
-                topic: "81mm"
-            },
-            
-
-                                      {
-                question: "What is the nomenclature of the 81mm mortar tube?",
-                answer: "M253A1",
-                topic: "81mm"
-            },
-            
-
-                                      {
-                question: "What are the different types of adjust fire missions?",
-                answer: "Grid, Polar, Shift",
-                topic: "General"
-            },
-            
-                                      {
-                question: "What is the nomenclature of the 60mm bipod?",
-                answer: "M170A1",
-                topic: "60mm"
-            },
-            
-
-                                      {
-                question: "What is the nomenclature of the 60mm mortar tube?",
-                answer: "M225A1",
-                topic: "60mm"
-            },
-            
-
-                                      {
-                question: "What are the nomenclatures of the 60mm baseplates?",
-                answer: "M7A1, M8",
-                topic: "60mm"
-            },
-            
-
-                                      {
-                question: "What is the nomenclature of the aiming posts?",
-                answer: "M14",
-                topic: "General"
-            },
-            
-
-                                      {
-                question: "What are the max ranges of the 60mm mortar system?",
-                answer: "3490m (Conventional) 1340m (Handheld)",
-                topic: "60mm"
-            },
-
-                                                  {
-                question: "What are the minimum ranges of the 60mm mortar system?",
-                answer: "70m-75m",
-                topic: "60mm"
-            },
-
-                                                              {
-                question: "What is the candlepower of the 120mm Illumination round?",
-                answer: "1 million",
-                topic: "120mm"
-            },
-
-                                                              {
-                question: "What is the candlepower of the 60mm Illumination round?",
-                answer: "its Round dependent. M83: The M83 and its variants produce between 145,000 and 250,000 candlepower. M721: This round provides approximately 300,000 to 400,000 candlepower. M63: A French 60mm M63 round produces 300,000 candlepower. ",
-                topic: "60mm"
-            },
-
-                                                              {
-                question: "How many mils for each turn of the traversing wheel on the 120mm mortar system?",
-                answer: "5 mils",
-                topic: "120mm"
-            },
-
-                                                              {
-                question: "Describe what a mortar system is.",
-                answer: "Smooth bore, muzzle loaded, crew served, air cooled, high angle fire weapon",
-                topic: "General"
-            },
-
-                                                              {
-                question: "What is the nomenclature of the multi-option fuze?",
-                answer: "M734A1",
-                topic: "Rounds"
-            },
-
-                                                              {
-                question: "",
-                answer: "",
-                topic: ""
-            },
-         ];
+            { question: "Whats the min and max range of a 120mm mortar?", answer: "The minimum range of a 120mm mortar is 200 meters and the maximum range is 7200 meters.", topic: "120mm" },
+            { question: "What is the kill radius of the HE 120mm mortar round?", answer: "70m to 75m", topic: "Rounds" },
+            { question: "What is the nomenclature of the 120mm bipod ground mounted?", answer: "M190", topic: "120mm" },
+            { question: "What is the nomenclature of the sight ?", answer: "M67", topic: "General" },
+            { question: "What is the nomenclature of the 120mm baseplate?", answer: "M9", topic: "120mm" },
+            { question: "What is the nomenclature of the 120mm mortar tube?", answer: "M298", topic: "120mm" },
+            { question: "What is the nomenclature of the bore sight?", answer: "M45", topic: "General" },
+            { question: "When bore sighting a mortar system, what should the elevation be set on?", answer: "0800", topic: "General" },
+            { question: "What does the bore sight detect?", answer: "Error on the sight", topic: "General" },
+            { question: "How many different round types are there for the 120mm mortar system?", answer: "5: HE, WP, Illum, FRTR, IR Illum", topic: "120mm" },
+            { question: "What are the NATO color markings of HE rounds?", answer: "Olive drab, yellow markings", topic: "Rounds" },
+            { question: "What are the NATO color markings of Illumination rounds?", answer: "White, black markings", topic: "Rounds" }, 
+            { question: "What are the NATO color markings on the white phosphorus rounds?", answer: "Light green, black markings", topic: "Rounds" },
+            { question: "When should you swab the tube?", answer: "Every 10 rounds or when FDC calls EOM (End of Mission)", topic: "General" },
+            { question: "What mortar equipment contains tritium?", answer: "Sight, pole lights, 60mm cannon handle, M2 Compass", topic: "General" },
+            { question: "What is the Maximum range of the 81mm mortar system?", answer: "5608m", topic: "81mm" },
+            { question: "What is the minimum range of the 81mm mortar system?", answer: "85m ask", topic: "81mm" },
+            { question: "What is the kill radius of the 81mm mortar system?", answer: "35m-40m", topic: "81mm" },
+            { question: "What is the nomenclature of the 81mm bipod?", answer: "M177A1", topic: "81mm" },
+            { question: "What is the nomenclature of the 81mm baseplate?", answer: "M3A2", topic: "81mm" },
+            { question: "What is the nomenclature of the 81mm mortar tube?", answer: "M253A1", topic: "81mm" },
+            { question: "What are the different types of adjust fire missions?", answer: "Grid, Polar, Shift", topic: "General" },
+            { question: "What is the nomenclature of the 60mm bipod?", answer: "M170A1", topic: "60mm" },
+            { question: "What is the nomenclature of the 60mm mortar tube?", answer: "M225A1", topic: "60mm" },
+            { question: "What are the nomenclatures of the 60mm baseplates?", answer: "M7A1, M8", topic: "60mm" },
+            { question: "What is the nomenclature of the aiming posts?", answer: "M14", topic: "General" },
+            { question: "What are the max ranges of the 60mm mortar system?", answer: "3490m (Conventional) 1340m (Handheld)", topic: "60mm" },
+            { question: "What are the minimum ranges of the 60mm mortar system?", answer: "70m-75m", topic: "60mm" },
+            { question: "What is the candlepower of the 120mm Illumination round?", answer: "1 million", topic: "120mm" },
+            { question: "What is the candlepower of the 60mm Illumination round?", answer: "its Round dependent. M83: The M83 and its variants produce between 145,000 and 250,000 candlepower. M721: This round provides approximately 300,000 to 400,000 candlepower. M63: A French 60mm M63 round produces 300,000 candlepower. ", topic: "60mm" },
+            { question: "How many mils for each turn of the traversing wheel on the 120mm mortar system?", answer: "5 mils", topic: "120mm" },
+            { question: "Describe what a mortar system is.", answer: "Smooth bore, muzzle loaded, crew served, air cooled, high angle fire weapon", topic: "General" },
+            { question: "What is the nomenclature of the multi-option fuze?", answer: "M734A1", topic: "Rounds" },
+        ];
 
         // --- DOM Elements ---
         const flashcardView = document.getElementById('flashcardView');
@@ -430,7 +273,7 @@
         // --- State Variables ---
         let currentCardIndex = 0;
         let isAnswerVisible = false;
-        let isListViewVisible = false; // New state variable
+        let isListViewVisible = false;
 
         /**
          * Utility function to display a message.
@@ -440,7 +283,8 @@
         function showMessage(msg, type = 'info') {
             messageBox.innerHTML = msg;
             messageBox.classList.remove('hidden');
-            messageBox.className = 'mt-4 p-3 rounded-lg text-sm font-medium border data-font mb-8'; 
+            messageBox.classList.remove('bg-red-900', 'text-red-300', 'border-red-700', 'bg-emerald-900', 'text-emerald-300', 'border-emerald-700', 'bg-gray-800', 'text-gray-300', 'border-blue-600'); 
+
             if (type === 'error') {
                 messageBox.classList.add('bg-red-900', 'text-red-300', 'border-red-700');
             } else if (type === 'success') {
@@ -454,30 +298,24 @@
          * Loads and displays the current question and topic.
          */
         function loadCard() {
+             if (flashcards.length === 0) {
+                showMessage("ERROR: No flashcards loaded in the data model.", 'error');
+                return;
+            }
             if (currentCardIndex >= flashcards.length) {
-                // If we've finished, reset the index for loop display
                 currentCardIndex = 0; 
                 showMessage("SEQUENCE COMPLETE: Cycle restarted. Reviewing from the beginning.", 'success');
             }
 
             const card = flashcards[currentCardIndex];
             
-            // Update Question
             questionText.innerHTML = card.question;
-            
-            // Update Answer (always load the answer, but keep it hidden/blurred)
             answerText.innerHTML = card.answer;
             
-            // Update Headers/Counters
-            cardHeader.textContent = `${card.topic.toUpperCase()} // `;
+            cardHeader.textContent = `${card.topic.toUpperCase()} // `; 
             cardCounter.textContent = `[${currentCardIndex + 1}/${flashcards.length}]`;
 
-            // Reset visibility
             toggleAnswer(false);
-
-            // Hide the 'Show Answer' button if the answer is already visible
-            showBtn.disabled = false;
-            showBtn.classList.remove('opacity-50', 'cursor-not-allowed');
         }
 
         /**
@@ -504,11 +342,10 @@
          * Moves to the next card in the sequence.
          */
         function nextCard() {
-            if (isListViewVisible) return; // Prevent navigation if list is visible
+            if (isListViewVisible) return;
 
             currentCardIndex++;
             loadCard();
-            // Clear message box on successful card load
             messageBox.classList.add('hidden');
         }
 
@@ -517,15 +354,12 @@
          */
         function resetApp() {
             currentCardIndex = 0;
-            loadCard();
-            // Ensure we are back on the flashcard view
             if (isListViewVisible) {
                 toggleListView();
             }
-            showMessage("Whats your best guess ?", 'info');
+            loadCard();
+            showMessage("Ready for the first question. What's your best guess?", 'info');
         }
-
-        // --- NEW FUNCTIONALITY ---
 
         /**
          * Generates the HTML for the list of all questions and answers.
@@ -535,7 +369,7 @@
             flashcards.forEach((card, index) => {
                 html += `
                     <div class="qa-list-item">
-                        <h3 class="text-md font-bold text-green-300 font-orbitron mb-1">
+                        <h3 class="text-md font-bold text-green-300 data-font-main mb-1">
                             Q${index + 1}. [${card.topic}]
                         </h3>
                         <p class="text-sm text-white data-font mb-2">${card.question}</p>
@@ -557,25 +391,22 @@
                 // Switch to List View
                 flashcardView.classList.add('hidden');
                 listView.classList.remove('hidden');
-                generateQAList(); // Generate list content
+                generateQAList(); 
                 
-                // Hide or disable flashcard buttons
                 showBtn.classList.add('hidden');
                 nextBtn.classList.add('hidden');
-                listBtnText.textContent = "VIEW CARD"; // Change button text
+                listBtnText.textContent = "VIEW CARD"; 
                 messageBox.classList.add('hidden');
             } else {
                 // Switch back to Flashcard View
                 flashcardView.classList.remove('hidden');
                 listView.classList.add('hidden');
                 
-                // Restore flashcard buttons
                 showBtn.classList.remove('hidden');
                 nextBtn.classList.remove('hidden');
-                listBtnText.textContent = "VIEW LIST"; // Change button text
-                // Re-load the current card to ensure state is correct
+                listBtnText.textContent = "VIEW LIST"; 
                 loadCard(); 
-                showMessage("Whats your best guess ?", 'info');
+                showMessage("Ready for the next card.", 'info');
             }
         }
 
