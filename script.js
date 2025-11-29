@@ -17,7 +17,7 @@ const studyGuideData = {
         },
         'Round Types': { 
             title: 'Rounds', 
-            info: 'HE: High Explosive <br> WP: White Phosphorus <br> Illumination <br> IR Illum <br> FRTR', 
+            info: 'HE: High Explosive <br> WP: White Phosphorus <br> Illumination <br> IR Illum', 
             imageUrl: 'https://placehold.co/400x300/047857/e2e8f0?text=MORTAR+ROUND+TYPES' 
         },
         'Fuse Types': { 
@@ -85,7 +85,7 @@ const studyGuideData = {
         },
         'Map Norths': { 
             title: 'The Three Norths', 
-            info: '**Grid North**: North as depicted by the vertical grid lines on a map (used for plotting). <br> **Magnetic North**: Points to the magnetic field surrounding the North Pole (where a compass points). <br> **True North**: Points to the Earth\'s geographical North Pole (lines of longitude).', 
+            info: '**Grid North**: North as depicted by the vertical grid lines on a map (used for plotting). <br> **Magnetic North**: Points to the magnetic field surrounding the North Pole (where a compass points). <br> **True North**: Points to the North Pole', 
             imageUrl: 'https://placehold.co/400x300/fcd34d/1f2937?text=TRUE+GRID+MAGNETIC' 
         },
         'Intersection': { 
@@ -119,14 +119,19 @@ const studyGuideData = {
             imageUrl: 'https://placehold.co/400x300/991b1b/1f2937?text=BACK+AZIMUTH+CALC' 
         },
         'How to Nav': { 
-            title: 'Dead Reckoning (How to Navigate)', 
-            info: 'The basic navigation technique using a known **starting point**, a known **direction** (azimuth/pace count), and a known **distance** (pace count/odometer) to reach an objective. Requires frequent checks and confirmation of the pace count.', 
+            title: '', 
+            info: '', 
             imageUrl: 'https://placehold.co/400x300/ef4444/1f2937?text=DEAD+RECKONING' 
         },
         'Obstacle Nav': { 
-            title: 'Obstacle Navigation (The Boxing Method)', 
-            info: 'A method to bypass obstacles while maintaining the original course and pace count. Involves two 90-degree turns and a calculated offset distance (e.g., walk $100m$ at $90°$, walk $200m$ parallel, walk $100m$ at the back azimuth, then return to the original azimuth).', 
+            title: '', 
+            info: '', 
             imageUrl: 'https://placehold.co/400x300/f87171/1f2937?text=OBSTACLE+BYPASS' 
+        },
+          'Contour lines ': { 
+            title: '', 
+            info: 'Index <br> Supplemnetary <br> Intermediate', 
+            imageUrl: 'images/contourlines.png' 
         },
     },
 
