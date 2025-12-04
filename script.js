@@ -198,13 +198,6 @@ const studyGuideData = {
         '14': { title: 'Drill 14: React to a chemical attack ', info: '', imageUrl: 'https://placehold.co/400x300/1f2937/e2e8f0?text=14' },
         '15': { title: 'Drill 15: React to a chemical agent attack', info: '', imageUrl: 'https://placehold.co/400x300/1f2937/e2e8f0?text=15' },
     },
-
-
-    '1064A1': {
-        'Combat Load': { title: 'M1064A1 Combat Load ', info: 'Horizontal Racks <br>  Vertical Racks', imageUrl: 'https://placehold.co/400x300/065f46/e2e8f0?text=1064A1+COMBAT+LOAD' },
-        'TM': { title: 'TM', info: 'TM', imageUrl: 'https://placehold.co/400x300/047857/e2e8f0?text=1064A1+TM' },
-        'Fluids and Levels': { title: 'M1064A1 Fluids & Levels ', info: '1540: Engine, Transmition, Final Drives <br> FRH: Ramp <br> Coolant: ', imageUrl: 'https://placehold.co/400x300/064e3b/e2e8f0?text=1064A1+FLUIDS' },
-    },
     
 };
 
