@@ -55,11 +55,6 @@ const studyGuideData = {
             info: 'Breach cap tightened <br> Firing pin inserted <br> Turntable locked <br> Skunk line (Firing Plunger Cable) <br> Traverse knob locked <br> Bipod pins inserted (arrows downward) <br> Hand wheel tightened <br> Hatches locked <br> Mask and overhead clearance', // Corrected typo 'Bad hand'
             imageUrl: 'https://placehold.co/400x300/111111/e2e8f9?text=SAFETY+CHECKS' 
         },
-        'Mask Over Head': { 
-            title: 'Mask Over Head Clearance', 
-            info: 'The minimum vertical and horizontal clearance required for safe firing operations to ensure the trajectory clears all obstacles.', 
-            imageUrl: 'https://placehold.co/400x300/111111/e2e8f9?text=MASK+OVERHEAD' 
-        },
     }, 
     
   'Land Nav': {
@@ -83,50 +78,16 @@ const studyGuideData = {
             info: 'Blue: Water features <br> Green: Vegetation <br> Brown: Cultivated land and Contour Lines <br> Black: Man-made structures/areas <br> Red: Urban areas and highly defined lines <br> Red-Brown: Used for combined contour lines and cultural features.', 
             imageUrl: 'https://placehold.co/400x300/a3e635/1f2937?text=MAP+COLOR+LEGEND' 
         },
-        'Map Norths': { 
+        'Types Norths': { 
             title: 'The Three Norths', 
             info: '**Grid North**: North as depicted by the vertical grid lines on a map (used for plotting). <br> **Magnetic North**: Points to the magnetic field surrounding the North Pole (where a compass points). <br> **True North**: Points to the North Pole', 
             imageUrl: 'https://placehold.co/400x300/fcd34d/1f2937?text=TRUE+GRID+MAGNETIC' 
         },
-        'Intersection': { 
-            title: 'Intersection', 
-            info: 'A method of locating an unknown point by determining and plotting the **magnetic azimuths** to that point from at least two (ideally three) known positions.', 
-            imageUrl: 'https://placehold.co/400x300/fbbf24/1f2937?text=INTERSECTION+METHOD' 
-        },
-        'Resection': { 
-            title: 'Resection', 
-            info: 'A method of locating one\'s **own unknown position** by determining the magnetic azimuths from that position to at least two (ideally three) visible, known distant points.', 
-            imageUrl: 'https://placehold.co/400x300/f59e0b/1f2937?text=RESECTION+METHOD' 
-        },
-        'Modified Resection': { 
-            title: 'Modified Resection', 
-            info: 'A method used when you are on a **linear feature** (like a road or creek) and can identify only **one** known distant point. Resect the azimuth to the point, convert it to a back azimuth, and where the back azimuth line intersects the linear feature is your location.', 
-            imageUrl: 'https://placehold.co/400x300/d97706/1f2937?text=MODIFIED+RESECTION' 
-        },
-        'Polar Method': { 
-            title: 'Polar Method', 
-            info: 'Locating an unknown point by giving a **direction** (azimuth) and a **distance** (range) from a known starting point. Requires accurate compass work and pacing/ranging.', 
-            imageUrl: 'https://placehold.co/400x300/b45309/1f2937?text=POLAR+METHOD' 
-        },
-        'Grid to Magnetic': { 
-            title: 'Grid to Magnetic Conversion', 
-            info: 'The process of converting an azimuth taken from a map (**Grid**) to the azimuth used by a compass (**Magnetic**). Generally involves applying the **Grid-Magnetic Angle (G-M Angle)** by either adding or subtracting the value. "**LARS**" (Left Add, Right Subtract) is a common mnemonic for conversion.', 
-            imageUrl: 'https://placehold.co/400x300/7c2d12/1f2937?text=G-M+ANGLE+CONVERSION' 
-        },
+     
         'Back Azimuth': { 
             title: 'Back Azimuth Calculation', 
-            info: 'The opposite direction of a given azimuth. Used to reverse course or verify a position. <br> If the azimuth is **less than 180°**, **add 180°**. <br> If the azimuth is **more than 180°**, **subtract 180°**. <br> Examples: $200° - 180° = 20°$ | $100° + 180° = 280°$', 
+            info: 'The opposite direction of a given azimuth. Used to reverse course or verify a position. <br> If the azimuth is **less than 180°**, **add 180°**. <br> If the azimuth is **more than 180°**, **subtract 180°**. <br> Examples: 200° - 180° = 20° | 100° + 180° = 280°', 
             imageUrl: 'https://placehold.co/400x300/991b1b/1f2937?text=BACK+AZIMUTH+CALC' 
-        },
-        'How to Nav': { 
-            title: '', 
-            info: '', 
-            imageUrl: 'https://placehold.co/400x300/ef4444/1f2937?text=DEAD+RECKONING' 
-        },
-        'Obstacle Nav': { 
-            title: '', 
-            info: '', 
-            imageUrl: 'https://placehold.co/400x300/f87171/1f2937?text=OBSTACLE+BYPASS' 
         },
           'Contour lines ': { 
             title: '', 
