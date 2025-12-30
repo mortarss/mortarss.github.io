@@ -112,7 +112,7 @@ const studyGuideData = {
         '4 Marksmenship Fundamnetals': { title: '4 Fundamentals of Marksmanship', info: 'Steady firing position <br> Aiming and sight picture <br> Breath control <br> Trigger squeeze', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=Fundamentals' }, 
         '6 Eelements of Call for fire': { title: '6 Elements of Call for Fire', info: 'Observation ID <br> WARNO <br> Target location <br> Target description <br> Method of engagment <br> Method of fire and control', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=6' }, 
         '8 Cycles of Fucntion of an M4': { title: '', info: 'Feeding <br> Chambering <br> Locking <br> Firing <br> Unlocking <br> Extracting <br> Ejecting <br> Cocking', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=8' }, 
-        '9 line Medavac': { title: '9 Line', info: '1. Location: Minimum 8-digit grid of pickup site <br> 2. Frequency/call-sign: Your frequency and call-sign/suffix <br> 3. Patients by precedence: A=Urgent, B=Priority, C=Routine, D=Convenience <br> 4. Equipment required: A=None, B=Hoist, C=Extraction equipment, D=Ventilator <br> 5. Patients by type: A=Litter, B=Ambulatory <br> 6. Security at pickup site: N=No enemy in area, P=Possible enemy in area, E=Enemy in area, X=Escort <br> 7. Method of marking: A=Panels, B=Pyro signal, C=Smoke, D=None, E=Other <br> 8. Patient nationality: A=US military, B=US civilian, C=Non-US military, D=Non-US civilian, E=EPW <br> 9. CBRN/terrain description: C=Chemical, B=Biological, R=Radioactive, N=Nuclear (description of terrain at site)', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=9LINE' }, 
+        '9 line Medavac': { title: '9 Line', info: '1. Location: Minimum 8-digit grid of pickup site <br> 2. Frequency/call-sign: Your frequency and call-sign/suffix <br> 3. Patients by precedence: <br> A=Urgent, B=Priority, C=Routine, D=Convenience <br> 4. Equipment required: <br> A=None, B=Hoist, C=Extraction equipment, D=Ventilator <br> 5. Patients by type: <br> A=Litter, B=Ambulatory <br> 6. Security at pickup site: <br> N=No enemy in area, P=Possible enemy in area, E=Enemy in area, X=Escort <br> 7. Method of marking: <br> A=Panels, B=Pyro signal, C=Smoke, D=None, E=Other <br> 8. Patient nationality: <br> A=US military, B=US civilian, C=Non-US military, D=Non-US civilian, E=EPW <br> 9. CBRN/terrain description: <br> C=Chemical, B=Biological, R=Radioactive, N=Nuclear (description of terrain at site)', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=9LINE' }, 
         '5s for POWS': { title: '', info: 'Search <br> Silence <br> Segregate <br> Safeguard <br> Speed to Rear', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=5' }, 
         'PACE': { title: 'PACE', info: 'Primary <br> Alternate <br> Contingency <br> Emergency ', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
         '3 Types of Recon': { title: 'Recon', info: 'Ground <br> Aerial <br> Map', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
@@ -164,8 +164,14 @@ const studyGuideData = {
         '15': { title: 'Drill 15: React to a chemical agent attack', info: '', imageUrl: 'https://placehold.co/400x300/1f2937/e2e8f0?text=15' },
     },
 
-        'MEDICAL': {
+        'Medical': {
         'MARCH-E': { title: 'MARCH-E', info: 'Massive hemorrhaging <br> Airway <br> Respiration <br> Circulation <br> Hypothermia <br> Evacuation', imageUrl: 'https://placehold.co/400x300/1f2937/e2e8f0?text=1' },
+         'TCCC': { title: 'Tactical Combat Casualty Care', info: 'Care under fire <br> Tactical field care <br> Tactical evac ', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+         'Splinting': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+         'Sings of shock': { title: 'Sings', info: 'Cool clamy skin <br> Weak pulse', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+         'Concusions': { title: 'Sings', info: 'Vomiting <br> dizziness <br> Dilated pupils (large and smalls) <br> Confusion', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+         'How to ID Heat Casualty': { title: 'How to ID', info: 'Lost of sweating <br> Exhaustion <br> cramping <be> Elevated temperature above 104 degrees', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+         'How to ID Cold Casualty': { title: 'How to ID', info: 'Shivering <br> Slurred speech <br> Drowsiness weak pulse <br> Temperature below 95 degrees', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
   
     },
     
@@ -180,19 +186,14 @@ const feedbackForm = document.getElementById('feedbackForm');
 const captchaQuestion = document.getElementById('captchaQuestion');
 const formStatus = document.getElementById('formStatus');
 
-// **!!! IMPORTANT: REPLACE THIS WITH YOUR DISCORD WEBHOOK URL !!!**
-// Note: This URL must be kept in the JS file as it's part of the fetch logic.
+
 const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1435806943812780164/MfjsECMOSksuchvfrpEktAJewoQ6xm7FiNDg9gz2QyqIOyXG6q22RblccWB5fvNDCqju'; 
 
 let activeSection = null;
-let initialContentHTML = ''; // RENAMED: Use 'initialContentHTML' for clarity
-let captchaAnswer = 0; // Stores the correct answer
+let initialContentHTML = ''; 
+let captchaAnswer = 0; 
 
-// --- CAPTCHA & FORM LOGIC (No changes needed) ---
 
-/**
- * Generates a simple addition CAPTCHA (e.g., 5 + 3) and updates the UI.
- */
 function generateCaptcha() {
     const num1 = Math.floor(Math.random() * 10) + 1; // 1-10
     const num2 = Math.floor(Math.random() * 10) + 1; // 1-10
@@ -294,7 +295,7 @@ async function handleFormSubmit(event) {
  * Stores the initial content message (now the centered image) to be reused when switching sections.
  */
 function storeInitialContent() {
-    // ⚠️ Updated to find the initial image container (assuming ID is initial-image-container)
+   
     const initialContentElement = document.getElementById('initial-image-container');
     if (initialContentElement) {
         // Save the HTML structure that displays the initial image
@@ -347,13 +348,10 @@ function renderMainNav() {
     mainNavContainer.appendChild(flashcardsLink);
 }
 
-/**
- * Shows the sub-navigation menu for the selected main section.
- * @param {string} section - The key of the main section selected.
- */
+
 function showSubNav(section) {
     activeSection = section;
-    // Update title with the new icon and title structure
+    
     currentSectionTitle.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 sm:w-7 sm:h-7 text-green-500">
             <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
@@ -363,7 +361,7 @@ function showSubNav(section) {
     subNavDiv.innerHTML = ''; 
     subNavContainerDiv.classList.remove('hidden');
     
-    // ⚠️ Updated to use the stored initial content (the image)
+   
     contentDisplay.innerHTML = initialContentHTML; 
 
     Object.keys(studyGuideData[section]).forEach(subsection => {
@@ -377,24 +375,15 @@ function showSubNav(section) {
         };
         subNavDiv.appendChild(button);
     });
-    // Scroll to the sub-nav section for better UX on smaller screens
+   
     subNavContainerDiv.scrollIntoView({ behavior: 'smooth' });
 }
 
-/**
- * Displays the content (image and text) for the selected subsection.
- * @param {string} section - The key of the main section.
- * @param {string} subsection - The key of the subsection selected.
- */
+
 function displayContent(section, subsection) {
     const content = studyGuideData[section][subsection];
 
-    // FIX APPLIED HERE: Added 'w-full h-auto object-cover' to the img class. 
-    // 'w-full' ensures it takes the full width of the parent (lg:w-1/2).
-    // 'h-auto' maintains aspect ratio. 'object-cover' or 'object-contain' is usually preferred 
-    // for responsiveness; 'object-cover' will make it fill the area while potentially clipping.
-    // Given the placeholder images, 'object-contain' might be better to show the full image, but
-    // 'object-cover' is often used for full-size visual impact. Sticking to 'object-contain' for max visibility.
+
     contentDisplay.innerHTML = `
         <div class="flex flex-col lg:flex-row items-start lg:space-x-8 w-full p-2">
             <div class="lg:w-1/2 w-full mb-6 lg:mb-0 relative">
@@ -414,8 +403,7 @@ function displayContent(section, subsection) {
         </div>
     `;
     
-    // ⚠️ Updated the ID to target the new initial image container
-    // This step is critical to remove the initial content when actual study content loads.
+   
     const initialWrapper = document.getElementById('initial-image-container');
     if(initialWrapper) {
         initialWrapper.remove();
