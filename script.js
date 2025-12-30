@@ -80,13 +80,13 @@ const studyGuideData = {
         },
         'Types Norths': { 
             title: 'The Three Norths', 
-            info: '**Grid North**: North as depicted by the vertical grid lines on a map (used for plotting). <br> **Magnetic North**: Points to the magnetic field surrounding the North Pole (where a compass points). <br> **True North**: Points to the North Pole', 
+            info: 'Grid North: North as depicted by the vertical grid lines on a map (used for plotting). <br> Magnetic North: Points to the magnetic field surrounding the North Pole (where a compass points). <br> True North: Points to the North Pole', 
             imageUrl: 'https://placehold.co/400x300/fcd34d/1f2937?text=TRUE+GRID+MAGNETIC' 
         },
      
         'Back Azimuth': { 
             title: 'Back Azimuth Calculation', 
-            info: 'The opposite direction of a given azimuth. Used to reverse course or verify a position. <br> If the azimuth is **less than 180°**, **add 180°**. <br> If the azimuth is **more than 180°**, **subtract 180°**. <br> Examples: 200° - 180° = 20° | 100° + 180° = 280°', 
+            info: 'The opposite direction of a given azimuth. Used to reverse course or verify a position. <br> If the azimuth is less than 180°, add 180°. <br> If the azimuth is more than 180°, **subtract 180°. <br> Examples: 200° - 180° = 20° | 100° + 180° = 280°', 
             imageUrl: 'https://placehold.co/400x300/991b1b/1f2937?text=BACK+AZIMUTH+CALC' 
         },
           'Contour lines ': { 
@@ -115,7 +115,7 @@ const studyGuideData = {
         '9 line Medavac': { title: '9 Line', info: '1. Location: Minimum 8-digit grid of pickup site <br> 2. Frequency/call-sign: Your frequency and call-sign/suffix <br> 3. Patients by precedence: A=Urgent, B=Priority, C=Routine, D=Convenience <br> 4. Equipment required: A=None, B=Hoist, C=Extraction equipment, D=Ventilator <br> 5. Patients by type: A=Litter, B=Ambulatory <br> 6. Security at pickup site: N=No enemy in area, P=Possible enemy in area, E=Enemy in area, X=Escort <br> 7. Method of marking: A=Panels, B=Pyro signal, C=Smoke, D=None, E=Other <br> 8. Patient nationality: A=US military, B=US civilian, C=Non-US military, D=Non-US civilian, E=EPW <br> 9. CBRN/terrain description: C=Chemical, B=Biological, R=Radioactive, N=Nuclear (description of terrain at site)', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=9LINE' }, 
         '5s for POWS': { title: '', info: 'Search <br> Silence <br> Segregate <br> Safeguard <br> Speed to Rear', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=5' }, 
         'PACE': { title: 'PACE', info: 'Primary <br> Alternate <br> Contingency <br> Emergency ', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
-        '3 Types of Recon': { title: 'Recon', info: '1 Ground <br> Aerial <br> Map', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        '3 Types of Recon': { title: 'Recon', info: 'Ground <br> Aerial <br> Map', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
         'METTT-C': { title: 'METTT-C', info: 'Mission <br> Enemy <br> Time <br> Terrain <br> Troops <br> Civil considerations', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=METTT-Cs' }, 
         'Types of breaching': { title: 'Types of breaching', info: 'Mechanical <br> Ballistic <br> Pyro <br> Thermal', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
         '': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
@@ -180,14 +180,19 @@ const feedbackForm = document.getElementById('feedbackForm');
 const captchaQuestion = document.getElementById('captchaQuestion');
 const formStatus = document.getElementById('formStatus');
 
-
+// **!!! IMPORTANT: REPLACE THIS WITH YOUR DISCORD WEBHOOK URL !!!**
+// Note: This URL must be kept in the JS file as it's part of the fetch logic.
 const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1435806943812780164/MfjsECMOSksuchvfrpEktAJewoQ6xm7FiNDg9gz2QyqIOyXG6q22RblccWB5fvNDCqju'; 
 
 let activeSection = null;
-let initialContentHTML = '';
-let captchaAnswer = 0; 
+let initialContentHTML = ''; // RENAMED: Use 'initialContentHTML' for clarity
+let captchaAnswer = 0; // Stores the correct answer
 
+// --- CAPTCHA & FORM LOGIC (No changes needed) ---
 
+/**
+ * Generates a simple addition CAPTCHA (e.g., 5 + 3) and updates the UI.
+ */
 function generateCaptcha() {
     const num1 = Math.floor(Math.random() * 10) + 1; // 1-10
     const num2 = Math.floor(Math.random() * 10) + 1; // 1-10
@@ -196,7 +201,10 @@ function generateCaptcha() {
     document.getElementById('captchaInput').value = ''; // Clear input
 }
 
-
+/**
+ * Handles form submission, performs CAPTCHA validation, and sends data to the Discord webhook.
+ * @param {Event} event - The form submission event.
+ */
 async function handleFormSubmit(event) {
     event.preventDefault();
     const submitButton = feedbackForm.querySelector('button[type="submit"]');
@@ -280,19 +288,31 @@ async function handleFormSubmit(event) {
     }
 }
 
+// --- NAVIGATION & CONTENT LOGIC ---
 
+/**
+ * Stores the initial content message (now the centered image) to be reused when switching sections.
+ */
 function storeInitialContent() {
+    // ⚠️ Updated to find the initial image container (assuming ID is initial-image-container)
     const initialContentElement = document.getElementById('initial-image-container');
     if (initialContentElement) {
+        // Save the HTML structure that displays the initial image
         initialContentHTML = initialContentElement.outerHTML; 
         
+        // Remove the element from the display immediately after saving it
+        // so it's only rendered once by the HTML, and then injected by JS later.
+        // If you prefer to keep it visible until the first click, skip this line.
+        // initialContentElement.remove(); 
     } else {
-       
+        // Fallback/Warning if the initial image container is not found
         console.warn("MTRS Study Hub: Initial image container not found. Content will be empty until a section is selected.");
     }
 }
 
-
+/**
+ * Renders the main navigation buttons based on the studyGuideData keys.
+ */
 function renderMainNav() {
     storeInitialContent(); 
     
@@ -343,7 +363,7 @@ function showSubNav(section) {
     subNavDiv.innerHTML = ''; 
     subNavContainerDiv.classList.remove('hidden');
     
-    
+    // ⚠️ Updated to use the stored initial content (the image)
     contentDisplay.innerHTML = initialContentHTML; 
 
     Object.keys(studyGuideData[section]).forEach(subsection => {
@@ -368,6 +388,13 @@ function showSubNav(section) {
  */
 function displayContent(section, subsection) {
     const content = studyGuideData[section][subsection];
+
+    // FIX APPLIED HERE: Added 'w-full h-auto object-cover' to the img class. 
+    // 'w-full' ensures it takes the full width of the parent (lg:w-1/2).
+    // 'h-auto' maintains aspect ratio. 'object-cover' or 'object-contain' is usually preferred 
+    // for responsiveness; 'object-cover' will make it fill the area while potentially clipping.
+    // Given the placeholder images, 'object-contain' might be better to show the full image, but
+    // 'object-cover' is often used for full-size visual impact. Sticking to 'object-contain' for max visibility.
     contentDisplay.innerHTML = `
         <div class="flex flex-col lg:flex-row items-start lg:space-x-8 w-full p-2">
             <div class="lg:w-1/2 w-full mb-6 lg:mb-0 relative">
@@ -386,16 +413,23 @@ function displayContent(section, subsection) {
             </div>
         </div>
     `;
-
+    
+    // ⚠️ Updated the ID to target the new initial image container
+    // This step is critical to remove the initial content when actual study content loads.
     const initialWrapper = document.getElementById('initial-image-container');
     if(initialWrapper) {
         initialWrapper.remove();
     }
     
+    // Scroll to the content for better UX on smaller screens
     contentDisplay.scrollIntoView({ behavior: 'smooth' });
 }
 
+// --- INITIALIZATION ---
 
+/**
+ * Initializes the application after the DOM is fully loaded.
+ */
 function init() {
     // Check if required elements exist before proceeding
     if (mainNavContainer && feedbackForm) {
