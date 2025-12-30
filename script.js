@@ -180,19 +180,14 @@ const feedbackForm = document.getElementById('feedbackForm');
 const captchaQuestion = document.getElementById('captchaQuestion');
 const formStatus = document.getElementById('formStatus');
 
-// **!!! IMPORTANT: REPLACE THIS WITH YOUR DISCORD WEBHOOK URL !!!**
-// Note: This URL must be kept in the JS file as it's part of the fetch logic.
+
 const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1435806943812780164/MfjsECMOSksuchvfrpEktAJewoQ6xm7FiNDg9gz2QyqIOyXG6q22RblccWB5fvNDCqju'; 
 
 let activeSection = null;
-let initialContentHTML = ''; // RENAMED: Use 'initialContentHTML' for clarity
-let captchaAnswer = 0; // Stores the correct answer
+let initialContentHTML = '';
+let captchaAnswer = 0; 
 
-// --- CAPTCHA & FORM LOGIC (No changes needed) ---
 
-/**
- * Generates a simple addition CAPTCHA (e.g., 5 + 3) and updates the UI.
- */
 function generateCaptcha() {
     const num1 = Math.floor(Math.random() * 10) + 1; // 1-10
     const num2 = Math.floor(Math.random() * 10) + 1; // 1-10
@@ -201,10 +196,7 @@ function generateCaptcha() {
     document.getElementById('captchaInput').value = ''; // Clear input
 }
 
-/**
- * Handles form submission, performs CAPTCHA validation, and sends data to the Discord webhook.
- * @param {Event} event - The form submission event.
- */
+
 async function handleFormSubmit(event) {
     event.preventDefault();
     const submitButton = feedbackForm.querySelector('button[type="submit"]');
@@ -288,31 +280,19 @@ async function handleFormSubmit(event) {
     }
 }
 
-// --- NAVIGATION & CONTENT LOGIC ---
 
-/**
- * Stores the initial content message (now the centered image) to be reused when switching sections.
- */
 function storeInitialContent() {
-    // ⚠️ Updated to find the initial image container (assuming ID is initial-image-container)
     const initialContentElement = document.getElementById('initial-image-container');
     if (initialContentElement) {
-        // Save the HTML structure that displays the initial image
         initialContentHTML = initialContentElement.outerHTML; 
         
-        // Remove the element from the display immediately after saving it
-        // so it's only rendered once by the HTML, and then injected by JS later.
-        // If you prefer to keep it visible until the first click, skip this line.
-        // initialContentElement.remove(); 
     } else {
-        // Fallback/Warning if the initial image container is not found
+       
         console.warn("MTRS Study Hub: Initial image container not found. Content will be empty until a section is selected.");
     }
 }
 
-/**
- * Renders the main navigation buttons based on the studyGuideData keys.
- */
+
 function renderMainNav() {
     storeInitialContent(); 
     
@@ -363,7 +343,7 @@ function showSubNav(section) {
     subNavDiv.innerHTML = ''; 
     subNavContainerDiv.classList.remove('hidden');
     
-    // ⚠️ Updated to use the stored initial content (the image)
+    
     contentDisplay.innerHTML = initialContentHTML; 
 
     Object.keys(studyGuideData[section]).forEach(subsection => {
@@ -388,13 +368,6 @@ function showSubNav(section) {
  */
 function displayContent(section, subsection) {
     const content = studyGuideData[section][subsection];
-
-    // FIX APPLIED HERE: Added 'w-full h-auto object-cover' to the img class. 
-    // 'w-full' ensures it takes the full width of the parent (lg:w-1/2).
-    // 'h-auto' maintains aspect ratio. 'object-cover' or 'object-contain' is usually preferred 
-    // for responsiveness; 'object-cover' will make it fill the area while potentially clipping.
-    // Given the placeholder images, 'object-contain' might be better to show the full image, but
-    // 'object-cover' is often used for full-size visual impact. Sticking to 'object-contain' for max visibility.
     contentDisplay.innerHTML = `
         <div class="flex flex-col lg:flex-row items-start lg:space-x-8 w-full p-2">
             <div class="lg:w-1/2 w-full mb-6 lg:mb-0 relative">
@@ -413,23 +386,16 @@ function displayContent(section, subsection) {
             </div>
         </div>
     `;
-    
-    // ⚠️ Updated the ID to target the new initial image container
-    // This step is critical to remove the initial content when actual study content loads.
+
     const initialWrapper = document.getElementById('initial-image-container');
     if(initialWrapper) {
         initialWrapper.remove();
     }
     
-    // Scroll to the content for better UX on smaller screens
     contentDisplay.scrollIntoView({ behavior: 'smooth' });
 }
 
-// --- INITIALIZATION ---
 
-/**
- * Initializes the application after the DOM is fully loaded.
- */
 function init() {
     // Check if required elements exist before proceeding
     if (mainNavContainer && feedbackForm) {
