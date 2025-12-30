@@ -94,6 +94,8 @@ const studyGuideData = {
             info: 'Index <br> Supplemnetary <br> Intermediate', 
             imageUrl: 'images/contourlines.png' 
         },
+
+        'Degrees in a mil': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=17.7' }, 
     },
 
     'OPS': {
@@ -109,12 +111,14 @@ const studyGuideData = {
         '5P OPORD': { title: '5 Paragraph OPORD', info: 'Situation <br> Mission <br> Execution <br> Sustainment <br> Command and signals', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=5POPORD' }, 
         '4 Marksmenship Fundamnetals': { title: '4 Fundamentals of Marksmanship', info: 'Steady firing position <br> Aiming and sight picture <br> Breath control <br> Trigger squeeze', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=Fundamentals' }, 
         '6 Eelements of Call for fire': { title: '6 Elements of Call for Fire', info: 'Observation ID <br> WARNO <br> Target location <br> Target description <br> Method of engagment <br> Method of fire and control', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=6' }, 
-        '8 Cycles of Fucntion': { title: '', info: 'Feeding <br> Chambering <br> Locking <br> Firing <br> Unlocking <br> Extracting <br> Ejecting <br> Cocking', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=8' }, 
+        '8 Cycles of Fucntion of an M4': { title: '', info: 'Feeding <br> Chambering <br> Locking <br> Firing <br> Unlocking <br> Extracting <br> Ejecting <br> Cocking', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=8' }, 
         '9 line Medavac': { title: '9 Line', info: '1. Location: Minimum 8-digit grid of pickup site <br> 2. Frequency/call-sign: Your frequency and call-sign/suffix <br> 3. Patients by precedence: A=Urgent, B=Priority, C=Routine, D=Convenience <br> 4. Equipment required: A=None, B=Hoist, C=Extraction equipment, D=Ventilator <br> 5. Patients by type: A=Litter, B=Ambulatory <br> 6. Security at pickup site: N=No enemy in area, P=Possible enemy in area, E=Enemy in area, X=Escort <br> 7. Method of marking: A=Panels, B=Pyro signal, C=Smoke, D=None, E=Other <br> 8. Patient nationality: A=US military, B=US civilian, C=Non-US military, D=Non-US civilian, E=EPW <br> 9. CBRN/terrain description: C=Chemical, B=Biological, R=Radioactive, N=Nuclear (description of terrain at site)', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=9LINE' }, 
         '5s for POWS': { title: '', info: 'Search <br> Silence <br> Segregate <br> Safeguard <br> Speed to Rear', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=5' }, 
-        '3 Movments Techniques': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
-        '2 Types of Bounding': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        'PACE': { title: 'PACE', info: 'Primary <br> Alternate <br> Contingency <br> Emergency ', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
         '3 Types of Recon': { title: 'Recon', info: '1 Ground <br> Aerial <br> Map', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        'METTT-C': { title: 'METTT-C', info: 'Mission <br> Enemy <br> Time <br> Terrain <br> Troops <br> Civil considerations', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=METTT-Cs' }, 
+        'Types of breaching': { title: 'Types of breaching', info: 'Mechanical <br> Ballistic <br> Pyro <br> Thermal', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
+        '': { title: '', info: '', imageUrl: 'https://placehold.co/400x300/059669/e2e8f0?text=' }, 
 },
 
 
@@ -158,6 +162,11 @@ const studyGuideData = {
         '13': { title: 'Drill 13: Dismount a Vehicle under Direct Fire', info: '', imageUrl: 'https://placehold.co/400x300/1f2937/e2e8f0?text=13' },
         '14': { title: 'Drill 14: React to a chemical attack ', info: '', imageUrl: 'https://placehold.co/400x300/1f2937/e2e8f0?text=14' },
         '15': { title: 'Drill 15: React to a chemical agent attack', info: '', imageUrl: 'https://placehold.co/400x300/1f2937/e2e8f0?text=15' },
+    },
+
+        'MEDICAL': {
+        'MARCH-E': { title: 'MARCH-E', info: 'Massive hemorrhaging <br> Airway <br> Respiration <br> Circulation <br> Hypothermia <br> Evacuation', imageUrl: 'https://placehold.co/400x300/1f2937/e2e8f0?text=1' },
+  
     },
     
 };
